@@ -20,6 +20,7 @@
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
+  html { scroll-behavior: smooth; }
   body { background: var(--cream); color: var(--ink); font-family: var(--sans); line-height: 1.55; }
   a { color: var(--green); }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
@@ -32,30 +33,42 @@
   nav.site a:hover { opacity: 1; text-decoration: underline; }
 
   main { display: block; }
-  .hero { background: var(--green); color: #fff; display: grid; grid-template-columns: 1.1fr .9fr; min-height: 440px; overflow: hidden; }
-  .hero-text { padding: 72px 48px 80px max(16px, calc((100vw - 1080px) / 2)); align-self: center; }
-  .hero h1 { font-family: var(--serif); font-weight: normal; font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.15; margin: 0 0 16px; max-width: 16ch; }
-  .hero p { font-size: 1.1rem; max-width: 46ch; margin: 0 0 28px; opacity: .92; }
-  .hero-art { position: relative; background: linear-gradient(160deg, #F6E9C9, #E3C47E); display: flex; align-items: flex-end; justify-content: center; }
-  .hero-art img { position: relative; display: block; width: min(100%, 420px); max-height: 440px; object-fit: contain; object-position: bottom; }
-  .hero-art .wave { position: absolute; top: 0; bottom: 0; left: -1px; width: 96px; height: 100%; }
-  .hero-art .wave path { fill: var(--green); }
-  .btn { display: inline-block; background: var(--gold); color: #fff; padding: 12px 22px; border-radius: 6px; text-decoration: none; font-weight: 600; }
-  .btn.ghost { background: transparent; border: 1px solid rgba(255,255,255,.6); margin-left: 10px; }
+
+  /* Hero: the tea house street scene, Iroh standing out front on the left, the welcome beside him. */
+  .hero { position: relative; height: clamp(440px, 46vw, 560px); overflow: hidden; background: #E7E2D3; }
+  .hero .scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right bottom; }
+  .hero .iroh { position: absolute; left: max(8px, calc((100vw - 1180px) / 2)); bottom: 0; height: 86%; width: auto; filter: drop-shadow(0 10px 8px rgba(60, 40, 20, .25)); }
+  .hero .welcome { position: absolute; left: calc(max(8px, calc((100vw - 1180px) / 2)) + min(30vw, 330px)); top: 50%; transform: translateY(-58%);
+                   width: min(390px, 34vw); background: rgba(250, 246, 238, .93); border: 1px solid var(--line); border-radius: 14px;
+                   padding: 26px 28px; box-shadow: 0 10px 30px rgba(60, 40, 20, .14); }
+  .hero h1 { font-family: var(--serif); font-weight: normal; color: var(--green-dark); font-size: clamp(1.7rem, 2.8vw, 2.4rem); line-height: 1.15; margin: 0 0 12px; }
+  .hero p { margin: 0 0 20px; color: var(--muted); }
+  .btn { display: inline-block; background: var(--green); color: #fff; padding: 11px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+  .btn.ghost { background: transparent; color: var(--green); border: 1px solid var(--green); margin-left: 8px; }
 
   section.block { padding: 64px 0; }
   section.block h2 { font-family: var(--serif); font-weight: normal; font-size: 2rem; margin: 0 0 8px; color: var(--green-dark); }
-  section.block .lead { color: var(--muted); margin: 0 0 32px; }
+  section.block .lead { color: var(--muted); margin: 0 0 24px; }
 
-  .teas { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-  .tea { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
-  .tea .swatch { height: 6px; border-radius: 3px; margin-bottom: 18px; }
-  .tea h3 { font-family: var(--serif); font-weight: normal; font-size: 1.3rem; margin: 0 0 6px; }
-  .tea p { color: var(--muted); margin: 0 0 14px; font-size: .95rem; }
-  .tea .price { font-weight: 600; color: var(--green); }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 8px; }
+  .chips a { text-decoration: none; border: 1px solid var(--green); color: var(--green); border-radius: 999px; padding: 6px 16px; font-size: .92rem; }
+  .chips a:hover { background: var(--green); color: #fff; }
+
+  .menu-group { padding-top: 36px; }
+  .group-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; border-bottom: 2px solid var(--gold); padding-bottom: 8px; margin-bottom: 20px; }
+  .group-head h3 { font-family: var(--serif); font-weight: normal; font-size: 1.5rem; margin: 0; color: var(--green-dark); }
+  .group-head p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .card .art { background: #F4ECDA; display: flex; justify-content: center; padding: 12px 0 4px; }
+  .card .art img { width: 170px; height: 170px; display: block; }
+  .card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+  .card h4 { font-family: var(--serif); font-weight: normal; font-size: 1.2rem; margin: 0 0 6px; }
+  .card p { color: var(--muted); margin: 0 0 14px; font-size: .93rem; flex: 1; }
+  .card .price { font-weight: 600; color: var(--green); }
 
   .about { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .about .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
+  .about .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; align-items: center; }
   .quote { font-family: var(--serif); font-size: 1.35rem; color: var(--green-dark); border-left: 3px solid var(--gold); padding-left: 18px; margin: 0; }
 
   .visit { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
@@ -67,15 +80,16 @@
   footer.site p { margin: 0; }
 
   @media (max-width: 760px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-text { padding: 48px 16px 40px; }
-    .hero-art { min-height: 300px; }
-    .hero-art .wave { top: -1px; bottom: auto; left: 0; width: 100%; height: 48px; transform: rotate(90deg) scaleX(-1); transform-origin: center; display: none; }
-    .hero-art img { max-height: 320px; }
+    .hero { height: auto; display: flex; flex-direction: column; background: var(--cream); }
+    .hero .welcome { position: static; transform: none; width: auto; margin: 16px; box-shadow: none; }
+    .hero .stage { position: relative; height: 300px; overflow: hidden; }
+    .hero .scene { object-position: 68% bottom; }
+    .hero .iroh { left: 4px; height: 78%; }
   }
+  @media (min-width: 761px) { .hero .stage { position: absolute; inset: 0; } .hero .welcome { z-index: 1; } }
   @media (max-width: 560px) {
     nav.site a { margin: 0 16px 0 0; }
-    .btn.ghost { margin: 10px 0 0; }
+    .card .art img { width: 150px; height: 150px; }
   }
 </style>
 </head>
@@ -87,7 +101,7 @@
       Uncle Iroh's Tea Shop
     </a>
     <nav class="site" aria-label="Main">
-      <a href="#teas">Our teas</a>
+      <a href="#menu">Menu</a>
       <a href="#about">About</a>
       <a href="#visit">Visit</a>
     </nav>
@@ -96,41 +110,160 @@
 
 <main id="top">
   <section class="hero">
-    <div class="hero-text">
-      <h1>Fine loose-leaf tea, poured with patience.</h1>
-      <p>Small-batch teas sold by the tin. Call or chat with us any time and Uncle Iroh will help you find the right cup.</p>
-      <a class="btn" href="#teas">See today's teas</a><a class="btn ghost" href="#visit">Hours and pickup</a>
+    <div class="welcome">
+      <h1>Come in, sit down. The kettle is already on.</h1>
+      <p>Loose leaf tea by the tin, drinks brewed to order, and pastries from the morning bake. Chat with Uncle Iroh any time to order ahead.</p>
+      <a class="btn" href="#menu">See the menu</a><a class="btn ghost" href="#visit">Find us</a>
     </div>
-    <div class="hero-art">
-      <svg class="wave" viewBox="0 0 96 400" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H34 C70 50 -4 100 30 150 C64 200 6 250 40 300 C68 345 28 375 44 400 H0 Z"/></svg>
-      <img src="https://jonmccain-nice.github.io/demo-assets/avatars/uncle_iroh_transparent.png" alt="Uncle Iroh holding a cup of tea">
+    <div class="stage">
+      <img class="scene" src="art/storefront.svg" alt="The front of the tea shop on a quiet stone street">
+      <img class="iroh" src="https://jonmccain-nice.github.io/demo-assets/avatars/uncle_iroh_transparent.png" alt="Uncle Iroh holding a cup of tea">
     </div>
   </section>
 
-  <section class="block" id="teas">
+  <section class="block" id="menu">
     <div class="wrap">
-      <h2>Our teas</h2>
-      <p class="lead">Three house blends, each sold by the tin in small or large.</p>
-      <div class="teas">
-        <article class="tea">
-          <div class="swatch" style="background:#D9C27A"></div>
-          <h3>Jasmine Dragon</h3>
+      <h2>The menu</h2>
+      <p class="lead">Everything here can be ordered for pickup. Just ask Uncle Iroh.</p>
+      <nav class="chips" aria-label="Menu sections"><a href="#tins">Tea tins</a><a href="#brews">Brewed drinks</a><a href="#pastries">Pastries</a></nav>
+      
+  <section class="menu-group" id="tins">
+    <div class="group-head"><h3>Tea tins</h3><p>Loose-leaf, blended in small batches and sealed by hand.</p></div>
+    <div class="cards">
+      <article class="card">
+        <div class="art"><img src="art/tin-jasmine-dragon.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Jasmine Dragon</h4>
           <p>Green tea scented with fresh jasmine blossoms. Light, floral and calming.</p>
           <span class="price">$24 per tin</span>
-        </article>
-        <article class="tea">
-          <div class="swatch" style="background:#E8E2D4"></div>
-          <h3>White Lotus</h3>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/tin-white-lotus.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>White Lotus</h4>
           <p>A delicate white tea with a soft, sweet finish. Our most requested blend.</p>
           <span class="price">$28 per tin</span>
-        </article>
-        <article class="tea">
-          <div class="swatch" style="background:#7A5A3A"></div>
-          <h3>Ba Sing Se Stone</h3>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/tin-ba-sing-se-stone.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Ba Sing Se Stone</h4>
           <p>A roasted oolong with a deep, toasty body. Good on a cold evening.</p>
           <span class="price">$22 per tin</span>
-        </article>
-      </div>
+        </div>
+      </article>
+    </div>
+  </section>
+      
+  <section class="menu-group" id="brews">
+    <div class="group-head"><h3>Brewed drinks</h3><p>Brewed to order. Ready in about ten minutes.</p></div>
+    <div class="cards">
+      <article class="card">
+        <div class="art"><img src="art/jasmine-dragon-cup.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Jasmine Dragon Cup</h4>
+          <p>Our house jasmine green, steeped to order and served in a red clay cup.</p>
+          <span class="price">$4.50 · large $5.50</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/white-lotus-cup.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>White Lotus Cup</h4>
+          <p>Pale, honeyed white tea with a lotus blossom on the saucer.</p>
+          <span class="price">$5.00 · large $6.00</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/stone-oolong-latte.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Stone Oolong Latte</h4>
+          <p>Ba Sing Se Stone oolong with steamed milk and a touch of brown sugar.</p>
+          <span class="price">$5.75 · large $6.75</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/fire-ginger-chai.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Fire Ginger Chai</h4>
+          <p>Black tea simmered with fresh ginger, cinnamon and star anise. Warm all the way down.</p>
+          <span class="price">$5.50 · large $6.50</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/iced-jasmine-cooler.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Iced Jasmine Cooler</h4>
+          <p>Cold-brewed jasmine over ice with a slice of lemon. Bright and refreshing.</p>
+          <span class="price">$5.25 · large $6.25</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/chrysanthemum-honey-tea.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Chrysanthemum Honey Tea</h4>
+          <p>Whole chrysanthemum flowers and wildflower honey. Caffeine free.</p>
+          <span class="price">$4.75 · large $5.75</span>
+        </div>
+      </article>
+    </div>
+  </section>
+      
+  <section class="menu-group" id="pastries">
+    <div class="group-head"><h3>Pastries</h3><p>Baked every morning and sold until they are gone.</p></div>
+    <div class="cards">
+      <article class="card">
+        <div class="art"><img src="art/lotus-mooncake.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Lotus Mooncake</h4>
+          <p>A golden pastry pressed with our seal and filled with sweet lotus seed paste.</p>
+          <span class="price">$4.25</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/egg-custard-tart.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Egg Custard Tart</h4>
+          <p>Flaky shell, silky baked custard. Best while still warm.</p>
+          <span class="price">$3.50</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/red-bean-bun.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Red Bean Bun</h4>
+          <p>A soft steamed bun filled with sweet red bean.</p>
+          <span class="price">$3.25</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/sesame-ball.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Sesame Ball</h4>
+          <p>Crisp outside, chewy inside, rolled in toasted sesame.</p>
+          <span class="price">$3.00</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/almond-cookie-duo.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Almond Cookie Duo</h4>
+          <p>Two buttery almond cookies. Made for dunking.</p>
+          <span class="price">$2.75</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/ginger-pear-tart.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Ginger Pear Tart</h4>
+          <p>Thin-sliced pear and candied ginger on a butter crust.</p>
+          <span class="price">$4.00</span>
+        </div>
+      </article>
+    </div>
+  </section>
     </div>
   </section>
 
@@ -138,8 +271,8 @@
     <div class="wrap cols">
       <div>
         <h2>About the shop</h2>
-        <p>Uncle Iroh opened the shop to share the teas he loves with his neighbors. Every tin is blended in small batches and sealed by hand.</p>
-        <p>Orders can be placed by phone or chat, and are ready for pickup the same day.</p>
+        <p>Uncle Iroh opened the shop to share the teas he loves with his neighbors. Every tin is blended in small batches and sealed by hand, the drinks are brewed one cup at a time, and the pastries come out of the oven every morning.</p>
+        <p>Orders can be placed by phone or chat and picked up at the counter.</p>
       </div>
       <p class="quote">"There is no hurry. Good tea, like good advice, is worth the wait."</p>
     </div>
@@ -148,11 +281,12 @@
   <section class="block" id="visit">
     <div class="wrap">
       <h2>Visit us</h2>
-      <p class="lead">Pick up your order in the shop, or ask us to hold it for you.</p>
+      <p class="lead">Come sit with a pot of tea, or order ahead and pick up at the counter.</p>
       <div class="visit">
+        <div><h3>Find us</h3><p>212 Lotus Lane, in the Lower Ring market</p></div>
         <div><h3>Hours</h3><p>Tuesday to Sunday, 9 a.m. to 7 p.m.</p></div>
-        <div><h3>Pickup</h3><p>Same day for orders placed before 5 p.m.</p></div>
-        <div><h3>Questions</h3><p>Chat with Uncle Iroh, or call the shop.</p></div>
+        <div><h3>Stay a while</h3><p>Twelve seats inside, a window bench, and a garden table out back.</p></div>
+        <div><h3>Pickup</h3><p>Drinks and pastries are ready in about ten minutes. Tins are ready the same day.</p></div>
       </div>
     </div>
   </section>

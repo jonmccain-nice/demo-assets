@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="lotus mooncake"><title>lotus mooncake</title><ellipse cx="120" cy="194" rx="80" ry="9" fill="#4A2420" opacity=".14"/><ellipse cx="120" cy="172" rx="86" ry="22" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="120" cy="170" rx="70" ry="16" fill="none" stroke="#E5A92B" stroke-width="2"/>
+  <path d="M62 140 C62 108 84 90 120 90 C156 90 178 108 178 140 C178 156 156 166 120 166 C84 166 62 156 62 140Z" fill="#C98B3C" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M62 140 C62 156 84 166 120 166 C156 166 178 156 178 140 C178 148 156 154 120 154 C84 154 62 148 62 140Z" fill="#9C6325" stroke="#4A2420" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M76 130 C78 112 92 102 108 98 C94 108 88 120 88 134Z" fill="#fff" opacity="0.3"/>
+  <g fill="none" stroke="#7A4A1B" stroke-width="2.6" stroke-linecap="round">
+    <circle cx="120" cy="122" r="22"/><circle cx="120" cy="122" r="9"/>
+    <path d="M120 100 V113 M120 131 V144 M98 122 H111 M129 122 H142 M104 106 L112 114 M136 130 L128 138 M136 106 L128 114 M104 138 L112 130"/>
+  </g></svg>

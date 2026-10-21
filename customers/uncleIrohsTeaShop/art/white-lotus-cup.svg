@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="white lotus cup"><title>white lotus cup</title><ellipse cx="120" cy="212" rx="72" ry="9" fill="#4A2420" opacity=".14"/><path d="M104 78 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#B89D7A" stroke-width="4" stroke-linecap="round" opacity=".75"/><path d="M120 78 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 2 -16" fill="none" stroke="#B89D7A" stroke-width="4" stroke-linecap="round" opacity=".75"/><path d="M136 78 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#B89D7A" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+    <ellipse cx="120" cy="194" rx="78" ry="11" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M170 112 C206 106 204 154 168 156" fill="none" stroke="#4A2420" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M170 112 C206 106 204 154 168 156" fill="none" stroke="#F4EBDD" stroke-width="5" stroke-linecap="round"/>
+    <path d="M58 100 H182 C182 152 160 190 120 190 C80 190 58 152 58 100Z" fill="#F4EBDD" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M68 108 C68 146 82 172 98 180 C84 162 78 136 78 108Z" fill="#fff" opacity="0.28"/>
+    <ellipse cx="120" cy="100" rx="62" ry="13" fill="#E5A92B" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+    <ellipse cx="120" cy="101" rx="54" ry="9" fill="#F3E2A9" stroke="#4A2420" stroke-width="2.5"/>
+  <path d="M58 100 H182 C182 112 180 122 176 132 H64 C60 122 58 112 58 100Z" fill="#7A2B2B" opacity=".9" stroke="#4A2420" stroke-width="2.5"/>
+  <g transform="translate(120 160) scale(0.55) translate(-120 -160)">
+    <path d="M90 160 Q92 140 112 136 Q114 156 90 160Z" fill="#F7D5DC" stroke="#4A2420" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M150 160 Q148 140 128 136 Q126 156 150 160Z" fill="#F7D5DC" stroke="#4A2420" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M106 162 Q104 130 120 122 Q136 130 134 162Z" fill="#FFF3F5" stroke="#4A2420" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  </g></svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="red bean bun"><title>red bean bun</title><ellipse cx="120" cy="212" rx="80" ry="9" fill="#4A2420" opacity=".14"/>
+  <ellipse cx="120" cy="172" rx="84" ry="24" fill="#B98B52" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="120" cy="168" rx="70" ry="16" fill="#D6AC73" stroke="#4A2420" stroke-width="2.5"/>
+  <path d="M120 168 m-70 0 M62 168 H178" fill="none" stroke="#4A2420" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity=".4"/>
+  <path d="M68 148 C66 106 92 86 120 86 C148 86 174 106 172 148 C172 162 148 168 120 168 C92 168 68 162 68 148Z" fill="#FFF6E6" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M80 138 C78 116 92 100 110 94 C96 106 90 120 92 140Z" fill="#fff" opacity="0.6"/>
+  <path d="M104 100 C112 94 128 94 136 100" fill="none" stroke="#4A2420" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" opacity=".35"/>
+  <circle cx="120" cy="110" r="7" fill="#B8302A" stroke="#4A2420" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M60 168 C76 150 76 190 92 172 C108 154 108 192 124 174 C140 156 140 192 156 174 C168 160 170 176 180 168" fill="none" stroke="#4A2420" stroke-width="0" /></svg>
