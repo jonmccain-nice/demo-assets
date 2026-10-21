@@ -32,9 +32,14 @@
   nav.site a:hover { opacity: 1; text-decoration: underline; }
 
   main { display: block; }
-  .hero { background: linear-gradient(135deg, var(--green-dark), var(--green)); color: #fff; padding: 72px 0 80px; }
-  .hero h1 { font-family: var(--serif); font-weight: normal; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; margin: 0 0 16px; max-width: 16ch; }
+  .hero { background: var(--green); color: #fff; display: grid; grid-template-columns: 1.1fr .9fr; min-height: 440px; overflow: hidden; }
+  .hero-text { padding: 72px 48px 80px max(16px, calc((100vw - 1080px) / 2)); align-self: center; }
+  .hero h1 { font-family: var(--serif); font-weight: normal; font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.15; margin: 0 0 16px; max-width: 16ch; }
   .hero p { font-size: 1.1rem; max-width: 46ch; margin: 0 0 28px; opacity: .92; }
+  .hero-art { position: relative; background: linear-gradient(160deg, #F6E9C9, #E3C47E); display: flex; align-items: flex-end; justify-content: center; }
+  .hero-art img { position: relative; display: block; width: min(100%, 420px); max-height: 440px; object-fit: contain; object-position: bottom; }
+  .hero-art .wave { position: absolute; top: 0; bottom: 0; left: -1px; width: 96px; height: 100%; }
+  .hero-art .wave path { fill: var(--green); }
   .btn { display: inline-block; background: var(--gold); color: #fff; padding: 12px 22px; border-radius: 6px; text-decoration: none; font-weight: 600; }
   .btn.ghost { background: transparent; border: 1px solid rgba(255,255,255,.6); margin-left: 10px; }
 
@@ -61,10 +66,16 @@
   footer.site { background: var(--green-dark); color: rgba(255,255,255,.8); padding: 28px 0; font-size: .85rem; }
   footer.site p { margin: 0; }
 
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-text { padding: 48px 16px 40px; }
+    .hero-art { min-height: 300px; }
+    .hero-art .wave { top: -1px; bottom: auto; left: 0; width: 100%; height: 48px; transform: rotate(90deg) scaleX(-1); transform-origin: center; display: none; }
+    .hero-art img { max-height: 320px; }
+  }
   @media (max-width: 560px) {
     nav.site a { margin: 0 16px 0 0; }
     .btn.ghost { margin: 10px 0 0; }
-    .hero { padding: 48px 0 56px; }
   }
 </style>
 </head>
@@ -85,10 +96,14 @@
 
 <main id="top">
   <section class="hero">
-    <div class="wrap">
+    <div class="hero-text">
       <h1>Fine loose-leaf tea, poured with patience.</h1>
       <p>Small-batch teas sold by the tin. Call or chat with us any time and Uncle Iroh will help you find the right cup.</p>
       <a class="btn" href="#teas">See today's teas</a><a class="btn ghost" href="#visit">Hours and pickup</a>
+    </div>
+    <div class="hero-art">
+      <svg class="wave" viewBox="0 0 96 400" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H34 C70 50 -4 100 30 150 C64 200 6 250 40 300 C68 345 28 375 44 400 H0 Z"/></svg>
+      <img src="https://jonmccain-nice.github.io/demo-assets/avatars/uncle_iroh_transparent.png" alt="Uncle Iroh holding a cup of tea">
     </div>
   </section>
 
