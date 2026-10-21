@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uncle Iroh's Tea Shop</title>
+<meta name="description" content="A fictional tea shop used as the stand-in web page for a NiCE Cognigy reactive demo.">
+<style>
+  :root {
+    --green: #2E6B3F;
+    --green-dark: #1F4A2B;
+    --gold: #C8963E;
+    --cream: #FAF6EE;
+    --paper: #FFFFFF;
+    --ink: #2B2A27;
+    --muted: #6B675F;
+    --line: #E6DFD0;
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--sans); line-height: 1.55; }
+  a { color: var(--green); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+  header.site { background: var(--green); color: #fff; }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; flex-wrap: wrap; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 1.35rem; color: #fff; text-decoration: none; }
+  .logo svg { width: 34px; height: 34px; flex: none; }
+  nav.site a { color: #fff; text-decoration: none; margin-left: 20px; font-size: .95rem; opacity: .9; }
+  nav.site a:hover { opacity: 1; text-decoration: underline; }
+
+  main { display: block; }
+  .hero { background: linear-gradient(135deg, var(--green-dark), var(--green)); color: #fff; padding: 72px 0 80px; }
+  .hero h1 { font-family: var(--serif); font-weight: normal; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; margin: 0 0 16px; max-width: 16ch; }
+  .hero p { font-size: 1.1rem; max-width: 46ch; margin: 0 0 28px; opacity: .92; }
+  .btn { display: inline-block; background: var(--gold); color: #fff; padding: 12px 22px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+  .btn.ghost { background: transparent; border: 1px solid rgba(255,255,255,.6); margin-left: 10px; }
+
+  section.block { padding: 64px 0; }
+  section.block h2 { font-family: var(--serif); font-weight: normal; font-size: 2rem; margin: 0 0 8px; color: var(--green-dark); }
+  section.block .lead { color: var(--muted); margin: 0 0 32px; }
+
+  .teas { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .tea { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
+  .tea .swatch { height: 6px; border-radius: 3px; margin-bottom: 18px; }
+  .tea h3 { font-family: var(--serif); font-weight: normal; font-size: 1.3rem; margin: 0 0 6px; }
+  .tea p { color: var(--muted); margin: 0 0 14px; font-size: .95rem; }
+  .tea .price { font-weight: 600; color: var(--green); }
+
+  .about { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .about .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
+  .quote { font-family: var(--serif); font-size: 1.35rem; color: var(--green-dark); border-left: 3px solid var(--gold); padding-left: 18px; margin: 0; }
+
+  .visit { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .visit div { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+  .visit h3 { margin: 0 0 6px; font-size: 1rem; color: var(--green-dark); }
+  .visit p { margin: 0; color: var(--muted); }
+
+  footer.site { background: var(--green-dark); color: rgba(255,255,255,.8); padding: 28px 0; font-size: .85rem; }
+  footer.site p { margin: 0; }
+
+  @media (max-width: 560px) {
+    nav.site a { margin: 0 16px 0 0; }
+    .btn.ghost { margin: 10px 0 0; }
+    .hero { padding: 48px 0 56px; }
+  }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Uncle Iroh's Tea Shop, home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#C8963E"/><path d="M11 17h16v5a8 8 0 0 1-16 0z" fill="#fff"/><path d="M27 18h2.5a3 3 0 0 1 0 6H26" fill="none" stroke="#fff" stroke-width="2"/><path d="M16 9c-1.5 2 1.5 3 0 5M21 9c-1.5 2 1.5 3 0 5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Uncle Iroh's Tea Shop
+    </a>
+    <nav class="site" aria-label="Main">
+      <a href="#teas">Our teas</a>
+      <a href="#about">About</a>
+      <a href="#visit">Visit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Fine loose-leaf tea, poured with patience.</h1>
+      <p>Small-batch teas sold by the tin. Call or chat with us any time and Uncle Iroh will help you find the right cup.</p>
+      <a class="btn" href="#teas">See today's teas</a><a class="btn ghost" href="#visit">Hours and pickup</a>
+    </div>
+  </section>
+
+  <section class="block" id="teas">
+    <div class="wrap">
+      <h2>Our teas</h2>
+      <p class="lead">Three house blends, each sold by the tin in small or large.</p>
+      <div class="teas">
+        <article class="tea">
+          <div class="swatch" style="background:#D9C27A"></div>
+          <h3>Jasmine Dragon</h3>
+          <p>Green tea scented with fresh jasmine blossoms. Light, floral and calming.</p>
+          <span class="price">$24 per tin</span>
+        </article>
+        <article class="tea">
+          <div class="swatch" style="background:#E8E2D4"></div>
+          <h3>White Lotus</h3>
+          <p>A delicate white tea with a soft, sweet finish. Our most requested blend.</p>
+          <span class="price">$28 per tin</span>
+        </article>
+        <article class="tea">
+          <div class="swatch" style="background:#7A5A3A"></div>
+          <h3>Ba Sing Se Stone</h3>
+          <p>A roasted oolong with a deep, toasty body. Good on a cold evening.</p>
+          <span class="price">$22 per tin</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block about" id="about">
+    <div class="wrap cols">
+      <div>
+        <h2>About the shop</h2>
+        <p>Uncle Iroh opened the shop to share the teas he loves with his neighbors. Every tin is blended in small batches and sealed by hand.</p>
+        <p>Orders can be placed by phone or chat, and are ready for pickup the same day.</p>
+      </div>
+      <p class="quote">"There is no hurry. Good tea, like good advice, is worth the wait."</p>
+    </div>
+  </section>
+
+  <section class="block" id="visit">
+    <div class="wrap">
+      <h2>Visit us</h2>
+      <p class="lead">Pick up your order in the shop, or ask us to hold it for you.</p>
+      <div class="visit">
+        <div><h3>Hours</h3><p>Tuesday to Sunday, 9 a.m. to 7 p.m.</p></div>
+        <div><h3>Pickup</h3><p>Same day for orders placed before 5 p.m.</p></div>
+        <div><h3>Questions</h3><p>Chat with Uncle Iroh, or call the shop.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Uncle Iroh's Tea Shop is a fictional business, built as a demo page for NiCE Cognigy Architect.</p>
+  </div>
+</footer>
+</body>
+</html>
