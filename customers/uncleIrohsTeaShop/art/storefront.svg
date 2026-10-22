@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMax slice" role="img" aria-label="The front of Uncle Iroh's Tea Shop on a quiet stone street">
-  <title>Uncle Iroh's Tea Shop</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMax slice" role="img" aria-label="The front of Uncle Iroh's Tea and Coffee Shop on a quiet stone street">
+  <title>Uncle Iroh's Tea and Coffee Shop</title>
   <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D5DDD8"/><stop offset="1" stop-color="#EFE6D2"/></linearGradient></defs>
   <rect width="1200" height="480" fill="url(#sky)"/>
 
@@ -43,9 +43,9 @@
   <path d="M566 208 Q600 206 626 192 H1074 Q1100 206 1134 208" fill="none" stroke="#8C877C" stroke-width="5" stroke-linecap="round"/>
   <path d="M676 86 Q664 64 640 60 Q668 56 692 70 H1008 Q1032 56 1060 60 Q1036 64 1024 86Z" fill="#4E4A43" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
 
-  <rect x="762" y="128" width="176" height="50" rx="4" fill="#3A2418" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <rect x="770" y="135" width="160" height="36" rx="2" fill="none" stroke="#E5A92B" stroke-width="2"/>
-  <text text-anchor="middle" font-family="Georgia, serif" font-size="15" letter-spacing="1.2" fill="#E5A92B"><tspan x="850" y="152">IROH'S TEA</tspan><tspan x="850" y="168">&amp; COFFEE</tspan></text>
+  <rect x="762" y="140" width="176" height="50" rx="4" fill="#3A2418" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="770" y="147" width="160" height="36" rx="2" fill="none" stroke="#E5A92B" stroke-width="2"/>
+  <text text-anchor="middle" font-family="Georgia, serif" font-size="15" letter-spacing="1.2" fill="#E5A92B"><tspan x="850" y="164">IROH'S TEA</tspan><tspan x="850" y="180">&amp; COFFEE</tspan></text>
 
   
     <path d="M780 216 V236" fill="none" stroke="#4A2420" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
