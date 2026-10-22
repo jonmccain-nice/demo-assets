@@ -1,0 +1,164 @@
+/* Uncle Iroh's Tea Shop — Webchat CSS, served from this site.
+   Trimmed from the NiCEview-era Customers/UncleIrohsTeaShop/chat-styles/webchat.css.
+   Dropped, because Iroh now owns its own webchat3 endpoint and those fields belong to
+   Endpoint settings (webchat-branding.md 1): header title, logos, bot avatar, message
+   sender name, the AI-agent notice text. Also dropped: the .webrtc_widget_* rules, whose
+   elements belonged to NiCEview's WebRTC widget and do not exist on this page. */
+
+/* Force the widget opaque (overrides Cognigy's default fade-in). Remove if you want the fade-in back. */
+html body div:has(div[data-cognigy-webchat-root="true"]) {
+  opacity: 1 !important;
+}
+div[data-cognigy-webchat-root="true"], div[data-cognigy-webchat-root="true"] * {
+  opacity: 1 !important;
+}
+
+/* Webchat theme variables (bubbles, links, action buttons). */
+:root {
+  --webchat-font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --webchat-primary-color: #2E6B3F;
+  --webchat-primary-color-hover: #1F4A2B;
+  --webchat-primary-color-focus: #C8963E;
+  --webchat-primary-contrast-color: #FFFFFF;
+  --webchat-secondary-color: #C8963E;
+  --webchat-secondary-contrast-color: #2B2A27;
+  --webchat-background-bot-message: #FFFFFF;
+  --webchat-bot-message-contrast-color: #2B2A27;
+  --webchat-border-bot-message: 1px solid #E6DFD0;
+  --webchat-background-user-message: #2E6B3F;
+  --webchat-user-message-contrast-color: #FFFFFF;
+  --webchat-border-user-message: 1px solid #2E6B3F;
+  --webchat-background-agent-message: #FAF6EE;
+  --webchat-agent-message-contrast-color: #2B2A27;
+  --webchat-border-agent-message: 1px solid #E6DFD0;
+  --webchat-text-link: #1F4A2B;
+  --webchat-text-dark: #2B2A27;
+  --webchat-text-light: #FFFFFF;
+  --webchat-bubble-border-radius: 16px;
+  --webchat-action-button-border-radius: 999px;
+  --webchat-action-button-background: #FFFFFF;
+  --webchat-action-button-background-hover: #2E6B3F;
+  --webchat-action-button-color: #2E6B3F;
+  --webchat-action-button-font-weight: 600;
+}
+
+/* Type stack across the widget. */
+[data-cognigy-webchat-root] * {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+}
+
+/* Widget surface and frame. */
+#webchatWindow {
+  background: #FAF6EE !important;
+  border: 1px solid #E6DFD0 !important;
+  box-shadow: 0 18px 50px rgba(31, 74, 43, 0.28) !important;
+}
+
+
+/* Homescreen welcome title. */
+[data-cognigy-webchat-root] h3.webchat-homescreen-title {
+  font-family: Georgia, "Times New Roman", serif !important;
+  color: #1F4A2B !important;
+}
+/* Homescreen body text under the welcome title. */
+[data-cognigy-webchat-root] .webchat-homescreen-body, [data-cognigy-webchat-root] .webchat-homescreen-content {
+  color: #2B2A27 !important;
+}
+
+/* Homescreen buttons — pill shaped, primary and outlined secondary. */
+.webchat-homescreen-send-button {
+  background: #2E6B3F !important;
+  color: #FFFFFF !important;
+  border: 1px solid #2E6B3F !important;
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+}
+.webchat-homescreen-send-button:hover {
+  background: #1F4A2B !important;
+  border-color: #1F4A2B !important;
+}
+.webchat-homescreen-previous-conversation-button {
+  background: #FFFFFF !important;
+  color: #2E6B3F !important;
+  border: 1px solid #2E6B3F !important;
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+}
+.webchat-homescreen-previous-conversation-button:hover {
+  background: #FAF6EE !important;
+}
+
+/* Homescreen close button — white pill. */
+.webchat-homescreen-close-button {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  color: #1F4A2B !important;
+  border-radius: 9999px !important;
+  width: 32px !important;
+  height: 32px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+}
+.webchat-homescreen-close-button svg path {
+  fill: #1F4A2B !important;
+}
+
+/* Widget panel size — change these to make the webchat wider/taller. */
+[data-cognigy-webchat-root] [data-cognigy-webchat] {
+  width: 460px !important;
+  height: 780px !important;
+}
+
+/* Send-message button icon. */
+[data-cognigy-webchat-root] .webchat-input-button-send svg path {
+  fill: #2E6B3F !important;
+}
+
+/* Webchat toggle button (the floating chat icon). Blank background-image so Cognigy's gradient doesn't mask the color. */
+#webchatWindowToggleButton, button.webchat-toggle-button, button[data-cognigy-webchat-toggle="true"], [data-cognigy-webchat-root="true"] button.webchat-toggle-button {
+  background-image: none !important;
+  background-color: #2E6B3F !important;
+  border-color: #2E6B3F !important;
+}
+/* Strip every descendant's hover background/filter so the inner darker circle becomes invisible. */
+#webchatWindowToggleButton:hover *, #webchatWindowToggleButton:hover *::before, #webchatWindowToggleButton:hover *::after, button.webchat-toggle-button:hover *, button.webchat-toggle-button:hover *::before, button.webchat-toggle-button:hover *::after, button[data-cognigy-webchat-toggle="true"]:hover *, button[data-cognigy-webchat-toggle="true"]:hover *::before, button[data-cognigy-webchat-toggle="true"]:hover *::after {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Webchat toggle icon — white on primary. */
+#webchatWindowToggleButton svg, #webchatWindowToggleButton svg path, button.webchat-toggle-button svg, button.webchat-toggle-button svg path {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Stop Cognigy's burst animation on the webchat toggle. */
+#webchatWindowToggleButton, button.webchat-toggle-button, button.webchat-toggle-button.burst, button[data-cognigy-webchat-toggle="true"], #webchatWindowToggleButton *, button.webchat-toggle-button * {
+  animation: none !important;
+  --icon-burst-duration: 0s !important;
+}
+
+/* Homescreen hero card — the Iroh avatar over a two-tone background.
+   The NiCEview-era file hung these two rules off the generated class
+   .cognigy-webchat-1te9a91, which webchat-branding.md §3 forbids. Retargeted here to the
+   stable .webchat-homescreen-content class; confirm in DevTools after a webchat release
+   that this element is still the homescreen body. */
+[data-cognigy-webchat-root] .webchat-homescreen-content {
+  position: relative !important;
+  background: linear-gradient(to bottom, transparent 33%, #1F4A2B 33%) !important;
+  overflow: hidden !important;
+}
+[data-cognigy-webchat-root] .webchat-homescreen-content::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 15% !important;
+  left: 50% !important;
+  transform: translate(-50%, 20%) !important;
+  width: 280px !important;
+  height: 280px !important;
+  border-radius: 20px !important;
+  background: url("https://jonmccain-nice.github.io/demo-assets/avatars/uncle_iroh_transparent.png") center bottom / contain no-repeat, linear-gradient(160deg, #FAF6EE 0%, #E9D5B2 100%) !important;
+  border: 2px solid #C8963E !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3) !important;
+}

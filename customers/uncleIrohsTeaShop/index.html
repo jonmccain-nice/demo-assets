@@ -93,6 +93,28 @@
     .card .art img { width: 150px; height: 150px; }
   }
 </style>
+
+<!-- Webchat styling, served from this site. Was pasted into NiCEview's Chat Styles field. -->
+<link rel="stylesheet" href="chat-styles/webchat.css">
+
+<style>
+  /* Call button. The NiCEview-era webrtc.css styled NiCEview's own widget
+     (.webrtc_widget_*); those elements do not exist here, so its intent — brand green
+     button, gold glow, pulsing avatar, no "powered by" — is restyled against our markup. */
+  #iroh-call { position: fixed; right: 20px; bottom: 96px; z-index: 9998; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+  #iroh-call[hidden] { display: none; }
+  #iroh-call-button { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px 12px 14px; border: none; border-radius: 100px; background: var(--green); color: #fff; font-family: var(--sans); font-size: .95rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 14px rgba(200, 150, 62, .45); transition: background .18s ease-out, transform .18s ease-out; }
+  #iroh-call-button:hover { background: var(--green-dark); transform: scale(1.03); }
+  #iroh-call-button:disabled { cursor: progress; opacity: .85; }
+  #iroh-call-button .iroh-call-avatar { width: 34px; height: 34px; flex: none; border-radius: 50%; border: 2px solid var(--gold); background: var(--cream) center / cover no-repeat; animation: irohCallPulse 2.4s ease-in-out infinite; }
+  @keyframes irohCallPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+  #iroh-call-button[data-state="connecting"] .iroh-call-avatar,
+  #iroh-call-button[data-state="on-call"] .iroh-call-avatar { animation: none; }
+  #iroh-call-button[data-state="on-call"] { background: #8E2F2F; box-shadow: 0 4px 14px rgba(142, 47, 47, .4); }
+  #iroh-call-button[data-state="on-call"]:hover { background: #702424; }
+  #iroh-call-note { margin: 0; max-width: 260px; padding: 6px 12px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); color: var(--ink); font-family: var(--sans); font-size: .8rem; text-align: right; }
+  #iroh-call-note:empty { display: none; }
+</style>
 </head>
 <body>
 <header class="site">
@@ -298,5 +320,169 @@
     <p>Uncle Iroh's Tea Shop is a fictional business, built as a demo page for NiCE Cognigy Architect.</p>
   </div>
 </footer>
+
+<!-- ─────────────────────────────────────────────────────────────────────────────
+     Cognigy demo: chat widget, WebRTC call button, and the reactive-views bridge.
+
+     NiCEview used to supply all three. The page now carries them itself:
+       • the Webchat v3 bundle, against this site's own webchat3 endpoint;
+       • a call button driving the Cognigy Click-to-Call SDK against the
+         voiceGateway2 endpoint;
+       • a bridge that re-raises each screen event as the window event
+         `nv-cognigy-metadata`, which uncle-irohs-tea-shop-views.js already listens
+         for — so that script is unchanged from the generator's output.
+     ───────────────────────────────────────────────────────────────────────────── -->
+
+<div id="iroh-call" hidden>
+  <button id="iroh-call-button" type="button" data-state="idle">
+    <span class="iroh-call-avatar" aria-hidden="true" style="background-image: url('https://jonmccain-nice.github.io/demo-assets/avatars/uncle_iroh_transparent.png')"></span>
+    <span class="iroh-call-label">Call the shop</span>
+  </button>
+  <p id="iroh-call-note" role="status" aria-live="polite"></p>
+</div>
+
+<!-- The reactive screens. Loaded first so its nv-cognigy-metadata listener is
+     registered before any widget can deliver an event. Served from this site, so
+     Tampermonkey is no longer involved; it is a byte-for-byte copy of
+     Customers/UncleIrohsTeaShop/uncle-irohs-tea-shop-views.user.js and is replaced
+     from it whenever build_reactive_views.py runs — never edited here. -->
+<script src="uncle-irohs-tea-shop-views.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var ENDPOINT_BASE = "https://cognigy-endpoint-na1.nicecxone.com/";
+  var CHAT_TOKEN  = "cc90429c1bf32a2da2e42373ad2bf2a72eb0beb4d9e99326627804647902f0ff";
+  var VOICE_TOKEN = "7c5ad5d61f6fab4840692f12ee4736ec58497f796b834bbaa5e00fa1a9f4f154";
+  var WEBCHAT_BUNDLE = "https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js";
+  var CALL_SDK = "https://cdn.jsdelivr.net/npm/@cognigy/click-to-call-sdk@0.2.2/dist/webRTCSDK.js";
+
+  // ── The bridge ─────────────────────────────────────────────────────────────
+  // Raise the event the views script waits for. Its own unwrap() opens JSON
+  // strings and {data}/{notifyMeta} wrappers, so either channel's shape works.
+  function raise(metadata, flowChannel) {
+    window.dispatchEvent(new CustomEvent("nv-cognigy-metadata", {
+      detail: { flowChannel: flowChannel, metadata: metadata }
+    }));
+  }
+
+  function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      var el = document.createElement("script");
+      el.src = src;
+      el.async = true;
+      el.onload = function () { resolve(); };
+      el.onerror = function () { reject(new Error("Could not load " + src)); };
+      document.head.appendChild(el);
+    });
+  }
+
+  // ── Chat ───────────────────────────────────────────────────────────────────
+  // metadata_notify's chat branch runs api.output("", payload), so the screen
+  // event arrives as the incoming message's `data`.
+  function startChat() {
+    return loadScript(WEBCHAT_BUNDLE).then(function () {
+      if (typeof window.initWebchat !== "function") {
+        throw new Error("webchat.js loaded but initWebchat is missing");
+      }
+      return window.initWebchat(ENDPOINT_BASE + CHAT_TOKEN);
+    }).then(function (webchat) {
+      window.irohWebchat = webchat;
+      webchat.registerAnalyticsService(function (event) {
+        if (!event || event.type !== "webchat/incoming-message") return;
+        var p = event.payload || {};
+        var d = p.data || (p.message && p.message.data);
+        if (d && typeof d === "object" && Object.keys(d).length) raise(d, "CHAT");
+      });
+      return webchat;
+    });
+  }
+
+  // ── Voice ──────────────────────────────────────────────────────────────────
+  var box    = document.getElementById("iroh-call");
+  var button = document.getElementById("iroh-call-button");
+  var label  = button.querySelector(".iroh-call-label");
+  var note   = document.getElementById("iroh-call-note");
+  var client = null;
+
+  function setState(state, text, message) {
+    button.setAttribute("data-state", state);
+    label.textContent = text;
+    button.disabled = (state === "connecting");
+    note.textContent = message || "";
+  }
+
+  function teardown(message) {
+    var old = client;
+    client = null;
+    setState("idle", "Call the shop", message);
+    if (!old) return;
+    Promise.resolve()
+      .then(function () { return old.endCall(); })
+      .catch(function () {})
+      .then(function () { return old.disconnect(); })
+      .catch(function () {})
+      .then(function () { return old.destroy(); })
+      .catch(function () {});
+  }
+
+  function startCall() {
+    setState("connecting", "Connecting…", "");
+    loadScript(CALL_SDK).then(function () {
+      if (!window.WebRTCSDK) throw new Error("webRTCSDK.js loaded but WebRTCSDK is missing");
+      return window.WebRTCSDK.createWebRTCClient({
+        endpointUrl: ENDPOINT_BASE + VOICE_TOKEN,
+        userId: "iroh-page-" + Math.random().toString(36).slice(2, 10)
+      });
+    }).then(function (c) {
+      client = c;
+      window.irohCallClient = c;
+
+      // The flow's Send Metadata node arrives as SIP INFO. A payload carrying
+      // _transcription is emitted as "transcription" instead, so it never lands here.
+      c.on("infoReceived", function (data) {
+        try {
+          raise(JSON.parse(data.info.body), "VOICE");
+        } catch (err) {
+          console.warn("[iroh call] could not read an infoReceived payload", err, data);
+        }
+      });
+
+      c.on("connected",  function () { setState("on-call", "End call", ""); });
+      c.on("answered",   function () { setState("on-call", "End call", ""); });
+      c.on("ended",      function () { teardown(""); });
+      c.on("failed",     function (d) { teardown("The call could not be placed."); console.warn("[iroh call] failed", d); });
+      c.on("disconnected", function () { if (client) teardown(""); });
+      c.on("error",      function (d) { console.warn("[iroh call] error", d); });
+
+      return c.connectAndCall();
+    }).catch(function (err) {
+      console.error("[iroh call]", err);
+      teardown("The call could not be started. See the browser console.");
+    });
+  }
+
+  button.addEventListener("click", function () {
+    if (client) {
+      teardown("");
+    } else {
+      startCall();
+    }
+  });
+
+  // Only offer the call once the browser can actually place one. checkWebRTCSupport
+  // needs the SDK, so test the same conditions it tests before loading it.
+  var canCall = !!(window.RTCPeerConnection && navigator.mediaDevices &&
+                   navigator.mediaDevices.getUserMedia);
+  if (canCall) box.hidden = false;
+
+  // ── Go ─────────────────────────────────────────────────────────────────────
+  startChat().catch(function (err) {
+    console.error("[iroh webchat]", err);
+  });
+})();
+</script>
+
 </body>
 </html>
