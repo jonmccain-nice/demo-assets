@@ -585,9 +585,12 @@
   var panel = document.getElementById("iroh-transcript");
   var lines = document.getElementById("iroh-transcript-lines");
 
-  panel.querySelector(".iroh-transcript-close").addEventListener("click", function () {
+  panel.querySelector(".iroh-transcript-close").addEventListener("click", closeTranscript);
+
+  function closeTranscript() {
     panel.hidden = true;
-  });
+    lines.textContent = "";
+  }
 
   function openTranscript(placeholder) {
     lines.textContent = "";
@@ -642,6 +645,7 @@
     var old = client;
     client = null;
     setState("idle", "Talk to Uncle Iroh", message);
+    closeTranscript();
     if (!old) return;
     Promise.resolve()
       .then(function () { return old.endCall(); })
@@ -677,6 +681,9 @@
 
       // The transcript of the call, one event per utterance.
       c.on("transcription", function (payload) {
+        // A late event after teardown must not reopen a panel the call just closed.
+        // window.irohTranscript stays usable from the console, which has no client.
+        if (!client) return;
         try {
           addTranscript(payload);
         } catch (err) {
