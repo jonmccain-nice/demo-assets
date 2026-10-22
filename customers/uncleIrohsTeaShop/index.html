@@ -98,22 +98,51 @@
 <link rel="stylesheet" href="chat-styles/webchat.css">
 
 <style>
-  /* Call button. The NiCEview-era webrtc.css styled NiCEview's own widget
-     (.webrtc_widget_*); those elements do not exist here, so its intent — brand green
-     button, gold glow, pulsing avatar, no "powered by" — is restyled against our markup. */
-  #iroh-call { position: fixed; right: 20px; bottom: 96px; z-index: 9998; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
-  #iroh-call[hidden] { display: none; }
-  #iroh-call-button { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px 12px 14px; border: none; border-radius: 100px; background: var(--green); color: #fff; font-family: var(--sans); font-size: .95rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 14px rgba(200, 150, 62, .45); transition: background .18s ease-out, transform .18s ease-out; }
-  #iroh-call-button:hover { background: var(--green-dark); transform: scale(1.03); }
-  #iroh-call-button:disabled { cursor: progress; opacity: .85; }
-  #iroh-call-button .iroh-call-avatar { width: 34px; height: 34px; flex: none; border-radius: 50%; border: 2px solid var(--gold); background: var(--cream) center / cover no-repeat; animation: irohCallPulse 2.4s ease-in-out infinite; }
-  @keyframes irohCallPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
-  #iroh-call-button[data-state="connecting"] .iroh-call-avatar,
-  #iroh-call-button[data-state="on-call"] .iroh-call-avatar { animation: none; }
-  #iroh-call-button[data-state="on-call"] { background: #8E2F2F; box-shadow: 0 4px 14px rgba(142, 47, 47, .4); }
-  #iroh-call-button[data-state="on-call"]:hover { background: #702424; }
-  #iroh-call-note { margin: 0; max-width: 260px; padding: 6px 12px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); color: var(--ink); font-family: var(--sans); font-size: .8rem; text-align: right; }
-  #iroh-call-note:empty { display: none; }
+  /* One launcher for both channels, the way NiCEview presented them: a single floating
+     button that expands into "Chat with us" and "Call the shop". The NiCEview-era
+     webrtc.css styled NiCEview's own widget (.webrtc_widget_*); those elements do not
+     exist here, so its intent — brand green, gold glow, pulsing avatar, no "powered by",
+     transcript above the page — is restyled against our own markup.
+
+     Cognigy's own floating chat toggle is hidden (below) so this launcher is the only
+     entry point; the chat window is opened with webchat.open(). */
+  #webchatWindowToggleButton,
+  button.webchat-toggle-button,
+  button[data-cognigy-webchat-toggle="true"] { display: none !important; }
+
+  #iroh-launcher { position: fixed; right: 20px; bottom: 24px; z-index: 9998; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; font-family: var(--sans); }
+  #iroh-launcher [hidden] { display: none; }
+
+  #iroh-launcher-button { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px 10px 12px; border: none; border-radius: 100px; background: var(--green); color: #fff; font-family: var(--sans); font-size: .95rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 14px rgba(200, 150, 62, .45); transition: background .18s ease-out, transform .18s ease-out; }
+  #iroh-launcher-button:hover { background: var(--green-dark); transform: scale(1.03); }
+  #iroh-launcher-button:disabled { cursor: progress; opacity: .85; }
+  #iroh-launcher-button .iroh-launcher-avatar { width: 38px; height: 38px; flex: none; border-radius: 50%; border: 2px solid var(--gold); background: var(--cream) center / cover no-repeat; animation: irohLauncherPulse 2.4s ease-in-out infinite; }
+  @keyframes irohLauncherPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+  #iroh-launcher-button[data-state="connecting"] .iroh-launcher-avatar,
+  #iroh-launcher-button[data-state="on-call"] .iroh-launcher-avatar { animation: none; }
+  #iroh-launcher-button[data-state="on-call"] { background: #8E2F2F; box-shadow: 0 4px 14px rgba(142, 47, 47, .4); }
+  #iroh-launcher-button[data-state="on-call"]:hover { background: #702424; }
+
+  #iroh-launcher-menu { display: flex; flex-direction: column; align-items: stretch; gap: 8px; }
+  .iroh-launcher-choice { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border: 1px solid var(--line); border-radius: 100px; background: var(--paper); color: var(--green-dark); font-family: var(--sans); font-size: .92rem; font-weight: 600; cursor: pointer; box-shadow: 0 6px 18px rgba(60, 40, 20, .16); white-space: nowrap; }
+  .iroh-launcher-choice:hover { background: var(--green); color: #fff; border-color: var(--green); }
+  .iroh-launcher-choice svg { width: 18px; height: 18px; flex: none; fill: currentColor; }
+
+  /* Live call transcript, in its own panel above the launcher. */
+  #iroh-transcript { width: min(320px, calc(100vw - 48px)); background: var(--paper); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 14px 40px rgba(60, 40, 20, .2); overflow: hidden; }
+  .iroh-transcript-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px 8px 14px; background: var(--green-dark); color: #fff; font-size: .82rem; font-weight: 600; letter-spacing: .02em; }
+  .iroh-transcript-close { border: none; background: transparent; color: #fff; font-size: 1rem; line-height: 1; padding: 2px 6px; border-radius: 6px; cursor: pointer; }
+  .iroh-transcript-close:hover { background: rgba(255, 255, 255, .18); }
+  #iroh-transcript-lines { max-height: 260px; overflow-y: auto; padding: 10px 14px 12px; font-size: .86rem; }
+  #iroh-transcript-lines p { margin: 0 0 8px; }
+  #iroh-transcript-lines p:last-child { margin-bottom: 0; }
+  #iroh-transcript-lines .who { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  #iroh-transcript-lines .said { color: var(--ink); }
+  #iroh-transcript-lines p.bot .said { color: var(--green-dark); }
+  #iroh-transcript-lines .waiting { color: var(--muted); font-style: italic; }
+
+  #iroh-launcher-note { margin: 0; max-width: 280px; padding: 6px 12px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); color: var(--ink); font-size: .8rem; text-align: right; }
+  #iroh-launcher-note:empty { display: none; }
 </style>
 </head>
 <body>
@@ -333,12 +362,32 @@
          for — so that script is unchanged from the generator's output.
      ───────────────────────────────────────────────────────────────────────────── -->
 
-<div id="iroh-call" hidden>
-  <button id="iroh-call-button" type="button" data-state="idle">
-    <span class="iroh-call-avatar" aria-hidden="true" style="background-image: url('https://jonmccain-nice.github.io/demo-assets/avatars/uncle_iroh_transparent.png')"></span>
-    <span class="iroh-call-label">Call the shop</span>
+<div id="iroh-launcher">
+  <section id="iroh-transcript" hidden aria-label="Call transcript">
+    <div class="iroh-transcript-head">
+      <span>Call transcript</span>
+      <button class="iroh-transcript-close" type="button" aria-label="Hide the transcript">&times;</button>
+    </div>
+    <div id="iroh-transcript-lines" role="log" aria-live="polite"></div>
+  </section>
+
+  <div id="iroh-launcher-menu" hidden>
+    <button class="iroh-launcher-choice" type="button" data-choice="chat">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+      Chat with us
+    </button>
+    <button class="iroh-launcher-choice" type="button" data-choice="call" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg>
+      Call the shop
+    </button>
+  </div>
+
+  <p id="iroh-launcher-note" role="status" aria-live="polite"></p>
+
+  <button id="iroh-launcher-button" type="button" data-state="idle" aria-expanded="false">
+    <span class="iroh-launcher-avatar" aria-hidden="true" style="background-image: url('https://jonmccain-nice.github.io/demo-assets/avatars/uncle_iroh_transparent.png')"></span>
+    <span class="iroh-launcher-label">Talk to Uncle Iroh</span>
   </button>
-  <p id="iroh-call-note" role="status" aria-live="polite"></p>
 </div>
 
 <!-- The reactive screens. Loaded first so its nv-cognigy-metadata listener is
@@ -399,13 +448,91 @@
     });
   }
 
-  // ── Voice ──────────────────────────────────────────────────────────────────
-  var box    = document.getElementById("iroh-call");
-  var button = document.getElementById("iroh-call-button");
-  var label  = button.querySelector(".iroh-call-label");
-  var note   = document.getElementById("iroh-call-note");
-  var client = null;
+  // The launcher opens the chat window itself, so Cognigy's own floating toggle is
+  // hidden in CSS. webchat.open() is the documented instance method; if a future bundle
+  // drops it, fall back to clicking whatever toggle the widget rendered.
+  function openChat() {
+    var w = window.irohWebchat;
+    if (w && typeof w.open === "function") { w.open(); return; }
+    var toggle = document.querySelector('#webchatWindowToggleButton, button.webchat-toggle-button, button[data-cognigy-webchat-toggle="true"]');
+    if (toggle) { toggle.click(); return; }
+    console.warn("[iroh webchat] no way to open the chat window was found");
+  }
 
+  // ── Launcher ───────────────────────────────────────────────────────────────
+  var button      = document.getElementById("iroh-launcher-button");
+  var label       = button.querySelector(".iroh-launcher-label");
+  var note        = document.getElementById("iroh-launcher-note");
+  var menu        = document.getElementById("iroh-launcher-menu");
+  var callChoice  = menu.querySelector('[data-choice="call"]');
+  var client      = null;
+
+  function setMenu(open) {
+    menu.hidden = !open;
+    button.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  menu.addEventListener("click", function (event) {
+    var choice = event.target.closest(".iroh-launcher-choice");
+    if (!choice) return;
+    setMenu(false);
+    if (choice.getAttribute("data-choice") === "chat") openChat();
+    else startCall();
+  });
+
+  // ── Transcript ─────────────────────────────────────────────────────────────
+  // The voice endpoint has webrtcWidgetConfig.transcription.enabled, so the SDK emits a
+  // "transcription" event per utterance: { originator: "user"|"bot", messages: [{text}] }.
+  // NiCEview's own widget rendered these; this panel takes that over.
+  var panel = document.getElementById("iroh-transcript");
+  var lines = document.getElementById("iroh-transcript-lines");
+
+  panel.querySelector(".iroh-transcript-close").addEventListener("click", function () {
+    panel.hidden = true;
+  });
+
+  function openTranscript(placeholder) {
+    lines.textContent = "";
+    var p = document.createElement("p");
+    p.className = "waiting";
+    p.textContent = placeholder;
+    lines.appendChild(p);
+    panel.hidden = false;
+  }
+
+  function addTranscript(payload) {
+    var who = (payload && payload.originator) === "user" ? "You" : "Uncle Iroh";
+    var messages = (payload && payload.messages) || [];
+    var added = false;
+    for (var i = 0; i < messages.length; i++) {
+      var text = messages[i] && messages[i].text;
+      if (!text) continue;
+      var p = document.createElement("p");
+      p.className = (who === "You") ? "user" : "bot";
+      var tag = document.createElement("span");
+      tag.className = "who";
+      tag.textContent = who;
+      var said = document.createElement("span");
+      said.className = "said";
+      said.textContent = text;
+      p.appendChild(tag);
+      p.appendChild(said);
+      lines.appendChild(p);
+      added = true;
+    }
+    if (!added) return;
+    var waiting = lines.querySelector(".waiting");
+    if (waiting) waiting.remove();
+    panel.hidden = false;
+    lines.scrollTop = lines.scrollHeight;
+  }
+
+  // Lets the panel be exercised from the console without placing a call, the way
+  // nvDemo.try() exercises the screens:
+  //   irohTranscript({ originator: "bot", messages: [{ text: "Welcome." }] })
+  window.irohTranscript = addTranscript;
+
+  // ── Voice ──────────────────────────────────────────────────────────────────
   function setState(state, text, message) {
     button.setAttribute("data-state", state);
     label.textContent = text;
@@ -416,7 +543,7 @@
   function teardown(message) {
     var old = client;
     client = null;
-    setState("idle", "Call the shop", message);
+    setState("idle", "Talk to Uncle Iroh", message);
     if (!old) return;
     Promise.resolve()
       .then(function () { return old.endCall(); })
@@ -429,6 +556,7 @@
 
   function startCall() {
     setState("connecting", "Connecting…", "");
+    openTranscript("Connecting the call…");
     loadScript(CALL_SDK).then(function () {
       if (!window.WebRTCSDK) throw new Error("webRTCSDK.js loaded but WebRTCSDK is missing");
       return window.WebRTCSDK.createWebRTCClient({
@@ -449,6 +577,15 @@
         }
       });
 
+      // The transcript of the call, one event per utterance.
+      c.on("transcription", function (payload) {
+        try {
+          addTranscript(payload);
+        } catch (err) {
+          console.warn("[iroh call] could not render a transcription payload", err, payload);
+        }
+      });
+
       c.on("connected",  function () { setState("on-call", "End call", ""); });
       c.on("answered",   function () { setState("on-call", "End call", ""); });
       c.on("ended",      function () { teardown(""); });
@@ -463,19 +600,26 @@
     });
   }
 
+  // One button: during a call it ends the call, otherwise it opens the two choices.
   button.addEventListener("click", function () {
     if (client) {
       teardown("");
+      setMenu(false);
     } else {
-      startCall();
+      setMenu(menu.hidden);
     }
+  });
+
+  // Clicking away closes the menu, as a floating launcher is expected to.
+  document.addEventListener("click", function (event) {
+    if (!menu.hidden && !event.target.closest("#iroh-launcher")) setMenu(false);
   });
 
   // Only offer the call once the browser can actually place one. checkWebRTCSupport
   // needs the SDK, so test the same conditions it tests before loading it.
   var canCall = !!(window.RTCPeerConnection && navigator.mediaDevices &&
                    navigator.mediaDevices.getUserMedia);
-  if (canCall) box.hidden = false;
+  if (canCall) callChoice.hidden = false;
 
   // ── Go ─────────────────────────────────────────────────────────────────────
   startChat().catch(function (err) {
