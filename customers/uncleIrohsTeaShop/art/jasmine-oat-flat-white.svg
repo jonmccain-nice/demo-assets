@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="jasmine oat flat white"><title>jasmine oat flat white</title>
+  <ellipse cx="120" cy="212" rx="64" ry="9" fill="#4A2420" opacity=".14"/>
+  <path d="M106 62 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#C9A98A" stroke-width="4" stroke-linecap="round" opacity=".6"/>
+  <path d="M122 62 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#C9A98A" stroke-width="4" stroke-linecap="round" opacity=".6"/>
+  <path d="M138 62 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#C9A98A" stroke-width="4" stroke-linecap="round" opacity=".6"/>
+  <ellipse cx="120" cy="198" rx="78" ry="14" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5"/>
+  <path d="M170 98 C206 94 206 150 166 154" fill="none" stroke="#4A2420" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/><path d="M170 98 C206 94 206 150 166 154" fill="none" stroke="#F6EAD0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M58 96 H182 L170 176 Q168 190 152 190 H88 Q72 190 70 176Z" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M68 104 H80 L88 180 H78Z" fill="#fff" opacity="0.5"/>
+  <rect x="64" y="128" width="112" height="9" fill="#6F9A55" opacity=".85" stroke="#4A2420" stroke-width="2"/>
+  <ellipse cx="120" cy="96" rx="62" ry="14" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5"/>
+  <ellipse cx="120" cy="97" rx="52" ry="9.5" fill="#E8D5B8" stroke="#4A2420" stroke-width="2"/>
+  <g transform="translate(120 97) scale(1 0.62) translate(-120 -97)"><ellipse cx="120" cy="88" rx="7.5" ry="9.5" transform="rotate(0 120 97)" fill="#FFF8EC" stroke="#A9814E" stroke-width="2.2" stroke-linejoin="round"/><ellipse cx="120" cy="88" rx="7.5" ry="9.5" transform="rotate(72 120 97)" fill="#FFF8EC" stroke="#A9814E" stroke-width="2.2" stroke-linejoin="round"/><ellipse cx="120" cy="88" rx="7.5" ry="9.5" transform="rotate(144 120 97)" fill="#FFF8EC" stroke="#A9814E" stroke-width="2.2" stroke-linejoin="round"/><ellipse cx="120" cy="88" rx="7.5" ry="9.5" transform="rotate(216 120 97)" fill="#FFF8EC" stroke="#A9814E" stroke-width="2.2" stroke-linejoin="round"/><ellipse cx="120" cy="88" rx="7.5" ry="9.5" transform="rotate(288 120 97)" fill="#FFF8EC" stroke="#A9814E" stroke-width="2.2" stroke-linejoin="round"/><circle cx="120" cy="97" r="4.5" fill="#E5A92B" stroke="#A9814E" stroke-width="2"/></g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Earth Nation Organic Coffee seal"><title>Earth Nation Organic Coffee seal</title>
+  <defs><clipPath id="enDisc"><circle cx="120" cy="120" r="66"/></clipPath></defs>
+  <ellipse cx="120" cy="222" rx="70" ry="9" fill="#4A2420" opacity=".14"/>
+  <rect x="32" y="32" width="176" height="176" rx="24" fill="#2E6B3F" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round"/>
+  <rect x="44" y="44" width="152" height="152" rx="18" fill="none" stroke="#E5A92B" stroke-width="2.5"/>
+  <circle cx="120" cy="120" r="66" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5"/>
+  <g clip-path="url(#enDisc)">
+    <path d="M46 196 L84 140 L110 172 L146 130 L196 196 Z" fill="#6F9A55" stroke="#4A2420" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M84 140 L96 157 L72 157 Z" fill="#F6EAD0" opacity=".55"/>
+    <path d="M146 130 L160 150 L132 150 Z" fill="#F6EAD0" opacity=".55"/>
+  </g>
+  <circle cx="120" cy="120" r="66" fill="none" stroke="#4A2420" stroke-width="3.5"/>
+  <g transform="rotate(-24 120 114)">
+    <ellipse cx="120" cy="114" rx="38" ry="27" fill="#6B4327" stroke="#4A2420" stroke-width="3.5"/>
+    <path d="M88 114 C104 99 136 129 152 114" fill="none" stroke="#F6EAD0" stroke-width="4.5" stroke-linecap="round"/>
+  </g>
+</svg>

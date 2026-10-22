@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="double espresso"><title>double espresso</title>
+  <ellipse cx="120" cy="212" rx="60" ry="9" fill="#4A2420" opacity=".14"/>
+  <path d="M108 62 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#C9A98A" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+  <path d="M124 62 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#C9A98A" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+  <ellipse cx="120" cy="190" rx="70" ry="16" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5"/>
+  <ellipse cx="120" cy="187" rx="48" ry="10" fill="#E8DAC0" stroke="#4A2420" stroke-width="2"/>
+  <path d="M158 112 C184 110 184 148 154 150" fill="none" stroke="#4A2420" stroke-width="10" stroke-linecap="round"/><path d="M158 112 C184 110 184 148 154 150" fill="none" stroke="#F6EAD0" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M80 98 H160 L150 168 Q148 180 134 180 H106 Q92 180 90 168Z" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M88 106 H98 L104 170 H96Z" fill="#fff" opacity="0.5"/>
+  <rect x="84" y="128" width="72" height="8" fill="#2E6B3F" opacity=".85" stroke="#4A2420" stroke-width="2"/>
+  <ellipse cx="120" cy="98" rx="40" ry="9" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5"/>
+  <ellipse cx="120" cy="99" rx="32" ry="6" fill="#8A5A32" stroke="#4A2420" stroke-width="2"/>
+  <path d="M104 99 C110 95 118 103 126 99" fill="none" stroke="#C79763" stroke-width="2.4" stroke-linecap="round"/>
+  <g transform="rotate(-16 56 196)"><ellipse cx="56" cy="196" rx="12" ry="8.5" fill="#6B4327" stroke="#4A2420" stroke-width="2.6"/><path d="M46 196 C51 191 61 201 66 196" fill="none" stroke="#F6EAD0" stroke-width="2.4" stroke-linecap="round"/></g>
+  <g transform="rotate(12 76 203)"><ellipse cx="76" cy="203" rx="12" ry="8.5" fill="#6B4327" stroke="#4A2420" stroke-width="2.6"/><path d="M66 203 C71 198 81 208 86 203" fill="none" stroke="#F6EAD0" stroke-width="2.4" stroke-linecap="round"/></g>
+</svg>

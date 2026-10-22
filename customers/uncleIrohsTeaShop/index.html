@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Uncle Iroh's Tea Shop</title>
-<meta name="description" content="A fictional tea shop used as the stand-in web page for a NiCE Cognigy reactive demo.">
+<title>Uncle Iroh's Tea and Coffee Shop</title>
+<meta name="description" content="A fictional tea and coffee shop used as the stand-in web page for a NiCE Cognigy reactive demo.">
 <style>
   :root {
     --green: #2E6B3F;
     --green-dark: #1F4A2B;
     --gold: #C8963E;
+    --coffee: #7A4B29;
     --cream: #FAF6EE;
     --paper: #FFFFFF;
     --ink: #2B2A27;
@@ -67,6 +68,18 @@
   .card h4 { font-family: var(--serif); font-weight: normal; font-size: 1.2rem; margin: 0 0 6px; }
   .card p { color: var(--muted); margin: 0 0 14px; font-size: .93rem; flex: 1; }
   .card .price { font-weight: 600; color: var(--green); }
+
+  #coffee .group-head { border-bottom-color: var(--coffee); }
+  #coffee .card .price { color: var(--coffee); }
+
+  .partners { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 36px 0; }
+  .partners .wrap { display: grid; grid-template-columns: minmax(0, 300px) 1fr; gap: 32px; align-items: center; }
+  .partners .crest { width: 100%; max-width: 300px; height: auto; display: block; }
+  .partners h2 { font-family: var(--serif); font-weight: normal; font-size: 1.7rem; margin: 0 0 10px; color: var(--green-dark); }
+  .partners p { margin: 0 0 12px; color: var(--muted); }
+  .partners p:last-child { margin-bottom: 0; }
+  .partners .lockup { width: 260px; max-width: 100%; height: auto; display: block; margin-top: 4px; }
+  @media (max-width: 700px) { .partners .wrap { grid-template-columns: 1fr; } }
 
   .about { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .about .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; align-items: center; }
@@ -148,9 +161,9 @@
 <body>
 <header class="site">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="Uncle Iroh's Tea Shop, home">
+    <a class="logo" href="#top" aria-label="Uncle Iroh's Tea and Coffee Shop, home">
       <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#C8963E"/><path d="M11 17h16v5a8 8 0 0 1-16 0z" fill="#fff"/><path d="M27 18h2.5a3 3 0 0 1 0 6H26" fill="none" stroke="#fff" stroke-width="2"/><path d="M16 9c-1.5 2 1.5 3 0 5M21 9c-1.5 2 1.5 3 0 5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
-      Uncle Iroh's Tea Shop
+      Uncle Iroh's Tea and Coffee Shop
     </a>
     <nav class="site" aria-label="Main">
       <a href="#menu">Menu</a>
@@ -164,7 +177,7 @@
   <section class="hero">
     <div class="welcome">
       <h1>Come in, sit down. The kettle is already on.</h1>
-      <p>Loose leaf tea by the tin, drinks brewed to order, and pastries from the morning bake. Chat with Uncle Iroh any time to order ahead.</p>
+      <p>Loose leaf tea by the tin, pastries from the morning bake, and now coffee and espresso from Earth Nation Organic Coffee. Chat with Uncle Iroh any time to order ahead.</p>
       <a class="btn" href="#menu">See the menu</a><a class="btn ghost" href="#visit">Find us</a>
     </div>
     <div class="stage">
@@ -173,14 +186,28 @@
     </div>
   </section>
 
+  <section class="block partners" id="partnership">
+    <div class="wrap">
+      <img class="crest" src="art/partnership-crest.svg" alt="The tea shop seal joined to the Earth Nation Organic Coffee mark">
+      <div>
+        <h2>Now pouring: Earth Nation Organic Coffee</h2>
+        <p>Uncle Iroh has gone into business with King Bumi of Omashu. Every bean is grown in the
+           terraces above the city, roasted in the old stone kilns, and brought down the mountain
+           to our counter.</p>
+        <p>Six coffee and espresso drinks are on the menu today, and both roasts are sold by the bag.</p>
+        <img class="lockup" src="art/earth-nation-lockup.svg" alt="Earth Nation Organic Coffee, grown and roasted in Omashu">
+      </div>
+    </div>
+  </section>
+
   <section class="block" id="menu">
     <div class="wrap">
       <h2>The menu</h2>
       <p class="lead">Everything here can be ordered for pickup. Just ask Uncle Iroh.</p>
-      <nav class="chips" aria-label="Menu sections"><a href="#tins">Tea tins</a><a href="#brews">Brewed drinks</a><a href="#pastries">Pastries</a></nav>
+      <nav class="chips" aria-label="Menu sections"><a href="#tins">Tea tins &amp; coffee bags</a><a href="#brews">Brewed drinks</a><a href="#coffee">Coffee &amp; espresso</a><a href="#pastries">Pastries</a></nav>
       
   <section class="menu-group" id="tins">
-    <div class="group-head"><h3>Tea tins</h3><p>Loose-leaf, blended in small batches and sealed by hand.</p></div>
+    <div class="group-head"><h3>Tea tins &amp; coffee bags</h3><p>Loose-leaf tea blended in small batches, and whole-bean coffee from Omashu.</p></div>
     <div class="cards">
       <article class="card">
         <div class="art"><img src="art/tin-jasmine-dragon.svg" alt="" loading="lazy" width="240" height="240"></div>
@@ -204,6 +231,22 @@
           <h4>Ba Sing Se Stone</h4>
           <p>A roasted oolong with a deep, toasty body. Good on a cold evening.</p>
           <span class="price">$22 per tin</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/bag-omashu-dark.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Omashu Dark Whole Bean</h4>
+          <p>The dark kiln roast, whole bean. Deep and earthy, the way the King takes it.</p>
+          <span class="price">$18 per bag</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/bag-earth-nation-house.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Earth Nation House Blend</h4>
+          <p>A medium roast with cocoa and toasted grain. Our everyday bag.</p>
+          <span class="price">$16 per bag</span>
         </div>
       </article>
     </div>
@@ -258,6 +301,60 @@
           <h4>Chrysanthemum Honey Tea</h4>
           <p>Whole chrysanthemum flowers and wildflower honey. Caffeine free.</p>
           <span class="price">$4.75 · large $5.75</span>
+        </div>
+      </article>
+    </div>
+  </section>
+      
+  <section class="menu-group" id="coffee">
+    <div class="group-head"><h3>Coffee &amp; espresso</h3><p>Pulled and poured to order, from Earth Nation Organic Coffee.</p></div>
+    <div class="cards">
+      <article class="card">
+        <div class="art"><img src="art/omashu-dark-drip.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Omashu Dark Drip</h4>
+          <p>The kiln roast, brewed by the pot all day. Deep, earthy and unhurried.</p>
+          <span class="price">$4.25 &middot; large $5.25</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/bumis-double-espresso.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Bumi's Double Espresso</h4>
+          <p>Two shots, pulled short, with a thick crema. The King drinks it standing up.</p>
+          <span class="price">$3.75</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/earth-nation-cortado.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Earth Nation Cortado</h4>
+          <p>Equal parts espresso and warm milk in a small glass. Smooth, no sweetness added.</p>
+          <span class="price">$4.75</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/rock-salt-caramel-latte.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Rock Salt Caramel Latte</h4>
+          <p>Espresso and steamed milk with caramel and a pinch of Omashu rock salt.</p>
+          <span class="price">$5.95 &middot; large $6.95</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/cave-cold-brew.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Cave Cold Brew</h4>
+          <p>Steeped cold for a full day in the cellar, poured over ice. Smooth and strong.</p>
+          <span class="price">$5.25 &middot; large $6.25</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="art"><img src="art/jasmine-oat-flat-white.svg" alt="" loading="lazy" width="240" height="240"></div>
+        <div class="card-body">
+          <h4>Jasmine Oat Flat White</h4>
+          <p>Espresso with jasmine-steeped oat milk, poured as a blossom. Our own idea.</p>
+          <span class="price">$5.75 &middot; large $6.75</span>
         </div>
       </article>
     </div>
@@ -324,6 +421,7 @@
       <div>
         <h2>About the shop</h2>
         <p>Uncle Iroh opened the shop to share the teas he loves with his neighbors. Every tin is blended in small batches and sealed by hand, the drinks are brewed one cup at a time, and the pastries come out of the oven every morning.</p>
+        <p>Since the partnership with King Bumi, the same counter also pours coffee and espresso from Earth Nation Organic Coffee, grown and roasted in Omashu.</p>
         <p>Orders can be placed by phone or chat and picked up at the counter.</p>
       </div>
       <p class="quote">"There is no hurry. Good tea, like good advice, is worth the wait."</p>
@@ -346,7 +444,7 @@
 
 <footer class="site">
   <div class="wrap">
-    <p>Uncle Iroh's Tea Shop is a fictional business, built as a demo page for NiCE Cognigy Architect.</p>
+    <p>Uncle Iroh's Tea and Coffee Shop is a fictional business, built as a demo page for NiCE Cognigy Architect. Earth Nation Organic Coffee is fictional too.</p>
   </div>
 </footer>
 

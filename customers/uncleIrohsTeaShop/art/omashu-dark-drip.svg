@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="omashu dark drip coffee"><title>omashu dark drip coffee</title>
+  <ellipse cx="120" cy="212" rx="62" ry="9" fill="#4A2420" opacity=".14"/>
+  <path d="M104 62 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#B89D7A" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+  <path d="M120 62 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#B89D7A" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+  <path d="M136 62 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#B89D7A" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+  <path d="M170 98 C206 94 206 150 166 154" fill="none" stroke="#4A2420" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/><path d="M170 98 C206 94 206 150 166 154" fill="none" stroke="#3F6B45" stroke-width="5" stroke-linecap="round"/>
+  <path d="M62 80 H178 L170 190 Q169 204 155 204 H85 Q71 204 70 190Z" fill="#3F6B45" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M72 90 H84 L90 192 H80Z" fill="#fff" opacity="0.22"/>
+  <rect x="62" y="126" width="116" height="10" fill="#E5A92B" opacity=".9" stroke="#4A2420" stroke-width="2.2"/>
+  <path d="M78 150 L96 168 L114 150 M126 150 L144 168 L162 150" fill="none" stroke="#2A4D30" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="120" cy="80" rx="58" ry="13" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round"/>
+  <ellipse cx="120" cy="81" rx="48" ry="8" fill="#3A2318" stroke="#4A2420" stroke-width="2"/>
+</svg>

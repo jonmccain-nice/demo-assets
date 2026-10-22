@@ -45,7 +45,7 @@
 
   <rect x="762" y="128" width="176" height="50" rx="4" fill="#3A2418" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
   <rect x="770" y="135" width="160" height="36" rx="2" fill="none" stroke="#E5A92B" stroke-width="2"/>
-  <text x="850" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="19" letter-spacing="1.5" fill="#E5A92B">IROH'S TEA</text>
+  <text text-anchor="middle" font-family="Georgia, serif" font-size="15" letter-spacing="1.2" fill="#E5A92B"><tspan x="850" y="152">IROH'S TEA</tspan><tspan x="850" y="168">&amp; COFFEE</tspan></text>
 
   
     <path d="M780 216 V236" fill="none" stroke="#4A2420" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>

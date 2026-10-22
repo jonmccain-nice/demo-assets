@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 150" role="img" aria-label="Earth Nation Organic Coffee"><title>Earth Nation Organic Coffee</title>
+  <defs><clipPath id="enlDisc"><circle cx="75" cy="75" r="46"/></clipPath></defs>
+  <rect x="13" y="13" width="124" height="124" rx="17" fill="#2E6B3F" stroke="#4A2420" stroke-width="3"/>
+  <rect x="21" y="21" width="108" height="108" rx="13" fill="none" stroke="#E5A92B" stroke-width="2"/>
+  <circle cx="75" cy="75" r="46" fill="#F6EAD0" stroke="#4A2420" stroke-width="3"/>
+  <g clip-path="url(#enlDisc)">
+    <path d="M23 128 L50 89 L68 111 L93 82 L128 128 Z" fill="#6F9A55" stroke="#4A2420" stroke-width="2.4" stroke-linejoin="round"/>
+  </g>
+  <circle cx="75" cy="75" r="46" fill="none" stroke="#4A2420" stroke-width="3"/>
+  <g transform="rotate(-24 75 71)">
+    <ellipse cx="75" cy="71" rx="26" ry="18.5" fill="#6B4327" stroke="#4A2420" stroke-width="3"/>
+    <path d="M53 71 C64 61 86 81 97 71" fill="none" stroke="#F6EAD0" stroke-width="3.4" stroke-linecap="round"/>
+  </g>
+  <text x="162" y="68" font-family="Georgia, 'Times New Roman', serif" font-size="34" letter-spacing="2" fill="#1F4A2B">EARTH NATION</text>
+  <path d="M164 84 H498" stroke="#E5A92B" stroke-width="3" stroke-linecap="round"/>
+  <text x="163" y="112" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="7" fill="#6B4327">ORGANIC COFFEE</text>
+</svg>
