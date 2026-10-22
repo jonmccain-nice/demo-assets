@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" width="816" height="1056" role="img" aria-label="Flyer announcing that Uncle Iroh's Tea and Coffee Shop now pours Earth Nation Organic Coffee, grown and roasted in Omashu"><title>Now pouring: Earth Nation Organic Coffee</title>
+  <!-- US Letter at 96 dpi. Same flat-vector idiom as the rest of the shop's art:
+       #4A2420 outlines, cream #F6EAD0 fills, Earth Nation green #2E6B3F, gold #E5A92B. -->
+  <defs>
+    <clipPath id="flyerCrestDisc"><circle cx="262" cy="85" r="50"/></clipPath>
+    <clipPath id="flyerSealDisc"><circle cx="75" cy="75" r="46"/></clipPath>
+  </defs>
+
+  <!-- ── paper and frame ──────────────────────────────────────────────────── -->
+  <rect x="0" y="0" width="816" height="1056" fill="#FAF6EE"/>
+  <rect x="24" y="24" width="768" height="1008" fill="none" stroke="#2E6B3F" stroke-width="3"/>
+  <rect x="33" y="33" width="750" height="990" fill="none" stroke="#E5A92B" stroke-width="1.5"/>
+
+  <!-- ── header band ──────────────────────────────────────────────────────── -->
+  <rect x="33" y="33" width="750" height="112" fill="#2E6B3F"/>
+  <text x="408" y="84" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="27" letter-spacing="7" fill="#F6EAD0">UNCLE IROH'S</text>
+  <path d="M228 100 H588" stroke="#E5A92B" stroke-width="1.5"/>
+  <text x="408" y="126" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" letter-spacing="9" fill="#E5A92B">TEA AND COFFEE SHOP</text>
+
+  <!-- ── announcement ─────────────────────────────────────────────────────── -->
+  <text x="408" y="192" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="14" letter-spacing="6" fill="#9C2F2F">ANNOUNCING A NEW PARTNERSHIP</text>
+  <text x="408" y="256" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="58" fill="#1F4A2B">Now Pouring</text>
+  <text x="408" y="296" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="29" fill="#6B4327">Earth Nation Organic Coffee</text>
+
+  <!-- ── the partnership crest: the shop's lotus tile joined to the Earth Nation seal ── -->
+  <g transform="translate(237 316) scale(0.95)">
+    <circle cx="98" cy="85" r="56" fill="#9C2F2F" stroke="#4A2420" stroke-width="3.5"/>
+    <circle cx="98" cy="85" r="47" fill="#F6EAD0" stroke="#4A2420" stroke-width="3"/>
+    <circle cx="98" cy="85" r="39" fill="none" stroke="#E5A92B" stroke-width="2"/>
+    <g transform="translate(98 96) scale(1.02) translate(-120 -160)">
+      <path d="M90 160 Q92 140 112 136 Q114 156 90 160Z" fill="#F7D5DC" stroke="#4A2420" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M150 160 Q148 140 128 136 Q126 156 150 160Z" fill="#F7D5DC" stroke="#4A2420" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M106 162 Q104 130 120 122 Q136 130 134 162Z" fill="#FFF3F5" stroke="#4A2420" stroke-width="2.5" stroke-linejoin="round"/>
+    </g>
+    <path d="M152 85 H216" stroke="#E5A92B" stroke-width="5" stroke-linecap="round"/>
+    <rect x="162" y="63" width="44" height="44" rx="6" transform="rotate(45 184 85)" fill="#E5A92B" stroke="#4A2420" stroke-width="3" stroke-linejoin="round"/>
+    <g transform="rotate(-24 184 85)">
+      <ellipse cx="184" cy="85" rx="14.5" ry="10.5" fill="#6B4327" stroke="#4A2420" stroke-width="2.6"/>
+      <path d="M172 85 C178 79 190 91 196 85" fill="none" stroke="#F6EAD0" stroke-width="2.4" stroke-linecap="round"/>
+    </g>
+    <rect x="212" y="35" width="100" height="100" rx="16" fill="#2E6B3F" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round"/>
+    <rect x="220" y="43" width="84" height="84" rx="11" fill="none" stroke="#E5A92B" stroke-width="2"/>
+    <circle cx="262" cy="85" r="50" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5"/>
+    <g clip-path="url(#flyerCrestDisc)">
+      <path d="M210 138 L238 99 L256 122 L282 92 L318 138 Z" fill="#6F9A55" stroke="#4A2420" stroke-width="2.6" stroke-linejoin="round"/>
+    </g>
+    <circle cx="262" cy="85" r="50" fill="none" stroke="#4A2420" stroke-width="3.5"/>
+    <g transform="rotate(-24 262 81)">
+      <ellipse cx="262" cy="81" rx="28" ry="20" fill="#6B4327" stroke="#4A2420" stroke-width="3.2"/>
+      <path d="M238 81 C250 70 274 92 286 81" fill="none" stroke="#F6EAD0" stroke-width="3.6" stroke-linecap="round"/>
+    </g>
+    <path d="M262 130 q-13 -2 -18 -10 q11 -4 18 4 q7 -8 18 -4 q-5 8 -18 10Z" fill="#6F9A55" stroke="#4A2420" stroke-width="2.4" stroke-linejoin="round"/>
+  </g>
+
+  <!-- ── body copy ────────────────────────────────────────────────────────── -->
+  <text text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#2B2A27">
+    <tspan x="408" y="490">Uncle Iroh has gone into business with King Bumi of Omashu. Every bean is grown</tspan>
+    <tspan x="408" y="514">in the terraces above the city, roasted in the old stone kilns, and brought down</tspan>
+    <tspan x="408" y="538">the mountain to our counter.</tspan>
+  </text>
+
+  <!-- ── featured drinks ──────────────────────────────────────────────────── -->
+  <path d="M100 574 H716" stroke="#E5A92B" stroke-width="1.5"/>
+  <rect x="308" y="562" width="200" height="24" fill="#FAF6EE"/>
+  <text x="408" y="580" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" letter-spacing="5" fill="#2E6B3F">POURED TO ORDER</text>
+
+  <!-- Bumi's Double Espresso -->
+  <g transform="translate(139 600) scale(0.5417)">
+    <ellipse cx="120" cy="212" rx="60" ry="9" fill="#4A2420" opacity=".14"/>
+    <path d="M108 62 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#C9A98A" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+    <path d="M124 62 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#C9A98A" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+    <ellipse cx="120" cy="190" rx="70" ry="16" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5"/>
+    <ellipse cx="120" cy="187" rx="48" ry="10" fill="#E8DAC0" stroke="#4A2420" stroke-width="2"/>
+    <path d="M158 112 C184 110 184 148 154 150" fill="none" stroke="#4A2420" stroke-width="10" stroke-linecap="round"/>
+    <path d="M158 112 C184 110 184 148 154 150" fill="none" stroke="#F6EAD0" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M80 98 H160 L150 168 Q148 180 134 180 H106 Q92 180 90 168Z" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M88 106 H98 L104 170 H96Z" fill="#fff" opacity="0.5"/>
+    <rect x="84" y="128" width="72" height="8" fill="#2E6B3F" opacity=".85" stroke="#4A2420" stroke-width="2"/>
+    <ellipse cx="120" cy="98" rx="40" ry="9" fill="#F6EAD0" stroke="#4A2420" stroke-width="3.5"/>
+    <ellipse cx="120" cy="99" rx="32" ry="6" fill="#8A5A32" stroke="#4A2420" stroke-width="2"/>
+    <path d="M104 99 C110 95 118 103 126 99" fill="none" stroke="#C79763" stroke-width="2.4" stroke-linecap="round"/>
+    <g transform="rotate(-16 56 196)"><ellipse cx="56" cy="196" rx="12" ry="8.5" fill="#6B4327" stroke="#4A2420" stroke-width="2.6"/><path d="M46 196 C51 191 61 201 66 196" fill="none" stroke="#F6EAD0" stroke-width="2.4" stroke-linecap="round"/></g>
+    <g transform="rotate(12 76 203)"><ellipse cx="76" cy="203" rx="12" ry="8.5" fill="#6B4327" stroke="#4A2420" stroke-width="2.6"/><path d="M66 203 C71 198 81 208 86 203" fill="none" stroke="#F6EAD0" stroke-width="2.4" stroke-linecap="round"/></g>
+  </g>
+  <text x="204" y="752" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" fill="#1F4A2B">Bumi's Double Espresso</text>
+  <text x="204" y="772" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#6B675F">$3.75</text>
+
+  <!-- Earth Nation Cortado -->
+  <g transform="translate(343 600) scale(0.5417)">
+    <ellipse cx="120" cy="212" rx="52" ry="9" fill="#4A2420" opacity=".14"/>
+    <path d="M112 62 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#C9A98A" stroke-width="4" stroke-linecap="round" opacity=".6"/>
+    <path d="M128 62 c-9 -10 9 -18 0 -30 c-4 -6 -2 -12 0 -16" fill="none" stroke="#C9A98A" stroke-width="4" stroke-linecap="round" opacity=".6"/>
+    <path d="M84 88 H156 L148 190 Q147 202 134 202 H106 Q93 202 92 190Z" fill="#fff" fill-opacity=".5" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M90 128 H150 L144 188 Q143 196 133 196 H107 Q97 196 96 188Z" fill="#4A2E1E" stroke="#4A2420" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M88 110 H152 L150 132 H90Z" fill="#C79763" stroke="#4A2420" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M86 96 H154 L152 112 H88Z" fill="#F3E6D2" stroke="#4A2420" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M92 96 H100 L104 190 H98Z" fill="#fff" opacity="0.35"/>
+    <ellipse cx="120" cy="88" rx="36" ry="8" fill="#F6EAD0" stroke="#4A2420" stroke-width="3"/>
+  </g>
+  <text x="408" y="752" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" fill="#1F4A2B">Earth Nation Cortado</text>
+  <text x="408" y="772" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#6B675F">$4.75</text>
+
+  <!-- Cave Cold Brew -->
+  <g transform="translate(547 600) scale(0.5417)">
+    <ellipse cx="120" cy="212" rx="58" ry="9" fill="#4A2420" opacity=".14"/>
+    <path d="M150 60 L166 18" fill="none" stroke="#4A2420" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M150 60 L166 18" fill="none" stroke="#3F6B45" stroke-width="5" stroke-linecap="round"/>
+    <path d="M78 42 H162 L152 192 Q151 206 138 206 H102 Q89 206 88 192Z" fill="#fff" fill-opacity=".5" stroke="#4A2420" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M82 76 H158 L150 190 Q149 200 138 200 H102 Q91 200 90 190Z" fill="#4A2E1E" stroke="#4A2420" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M82 76 H158 L156 96 H84Z" fill="#C79763" stroke="#4A2420" stroke-width="2.2" stroke-linejoin="round"/>
+    <g stroke="#fff" stroke-width="2.5" fill="#fff" fill-opacity=".45" stroke-linejoin="round">
+      <rect x="94" y="100" width="26" height="26" rx="5" transform="rotate(-12 107 113)"/>
+      <rect x="124" y="112" width="26" height="26" rx="5" transform="rotate(14 137 125)"/>
+      <rect x="100" y="144" width="26" height="26" rx="5" transform="rotate(8 113 157)"/>
+    </g>
+    <path d="M86 50 H96 L100 190 H92Z" fill="#fff" opacity="0.3"/>
+  </g>
+  <text x="612" y="752" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" fill="#1F4A2B">Cave Cold Brew</text>
+  <text x="612" y="772" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#6B675F">$5.25 &#183; large $6.25</text>
+
+  <!-- ── the rest of the list ─────────────────────────────────────────────── -->
+  <text x="100" y="818" font-family="Georgia, 'Times New Roman', serif" font-size="12" letter-spacing="4" fill="#2E6B3F">ALSO POURING</text>
+  <path d="M100 826 H392" stroke="#E6DFD0" stroke-width="1.5"/>
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="14" fill="#2B2A27">
+    <tspan x="100" y="848">Omashu Dark Drip</tspan><tspan x="392" y="848" text-anchor="end" fill="#6B675F">$4.25</tspan>
+    <tspan x="100" y="872">Rock Salt Caramel Latte</tspan><tspan x="392" y="872" text-anchor="end" fill="#6B675F">$5.95</tspan>
+    <tspan x="100" y="896">Jasmine Oat Flat White</tspan><tspan x="392" y="896" text-anchor="end" fill="#6B675F">$5.75</tspan>
+  </text>
+
+  <text x="424" y="818" font-family="Georgia, 'Times New Roman', serif" font-size="12" letter-spacing="4" fill="#2E6B3F">BY THE BAG</text>
+  <path d="M424 826 H716" stroke="#E6DFD0" stroke-width="1.5"/>
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="14" fill="#2B2A27">
+    <tspan x="424" y="848">Omashu Dark Whole Bean</tspan><tspan x="716" y="848" text-anchor="end" fill="#6B675F">$18</tspan>
+    <tspan x="424" y="872">Earth Nation House Blend</tspan><tspan x="716" y="872" text-anchor="end" fill="#6B675F">$16</tspan>
+    <tspan x="424" y="896" fill="#6B675F" font-size="13">Ground at the counter on request</tspan>
+  </text>
+
+  <!-- ── footer band ──────────────────────────────────────────────────────── -->
+  <rect x="33" y="920" width="750" height="76" fill="#2E6B3F"/>
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="11" letter-spacing="3" fill="#E5A92B">
+    <tspan x="80" y="948">FIND US</tspan><tspan x="330" y="948">HOURS</tspan><tspan x="548" y="948">ORDER AHEAD</tspan>
+  </text>
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#F6EAD0">
+    <tspan x="80" y="972">212 Lotus Lane</tspan><tspan x="330" y="972">Tuesday to Sunday</tspan><tspan x="548" y="972">Chat with Uncle Iroh</tspan>
+    <tspan x="80" y="988" font-size="12">In the Lower Ring market</tspan><tspan x="330" y="988" font-size="12">9 a.m. to 7 p.m.</tspan><tspan x="548" y="988" font-size="12">Ready in about ten minutes</tspan>
+  </text>
+
+  <text x="408" y="1008" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="9.5" fill="#6B675F">Uncle Iroh's Tea and Coffee Shop and Earth Nation Organic Coffee are fictional, built as a demo for NiCE Cognigy Architect.</text>
+</svg>
