@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         NiCEview Dynamic Views — Uncle Irohs Tea Shop
+// @name         NiCEview Dynamic Views — Uncle Irohs Tea and Coffee Shop
 // @namespace    https://nice.com/
-// @version      1.0.3
-// @description  Shows Uncle Irohs Tea Shop screens on the website as the AI Agent works, driven by Cognigy events relayed by the NiCEview extension.
+// @version      1.0.5
+// @description  Shows Uncle Irohs Tea and Coffee Shop screens on the website as the AI Agent works, driven by Cognigy events relayed by the NiCEview extension.
 // @author       NiCEview
 // @match        https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/*
 // @run-at       document-start
@@ -38,7 +38,7 @@
   "use strict";
 
   // ── Settings (generated) ──────────────────────────────────────────────────
-  const CONFIG = {"fallbackBrand": "Uncle Irohs Tea Shop", "target": ["main", "[role=main]", "#main", "#content", ".content"], "homeAfterMs": 30000, "rating": true, "brand": {"primary": "#2E6B3F", "accent": "#C8963E", "font": "Georgia, serif"}};
+  const CONFIG = {"fallbackBrand": "Uncle Irohs Tea and Coffee Shop", "target": ["main", "[role=main]", "#main", "#content", ".content"], "homeAfterMs": 30000, "rating": true, "brand": {"primary": "#2E6B3F", "accent": "#C8963E", "font": "Georgia, serif"}};
 
   // One entry per action the flow sends. kind: "hero" (narrow card), "page"
   // (full width) or "list" (one card per item in an array). Text fields take
@@ -94,6 +94,40 @@
           "summary"
         ],
         [
+          "user",
+          "Name",
+          "name"
+        ],
+        [
+          "clock",
+          "Pickup",
+          "pickup"
+        ]
+      ],
+      "nudge": "Add a drink or a pastry, or tell Iroh you are all set and he will read back the total."
+    },
+    "order_total": {
+      "kind": "hero",
+      "color": "green",
+      "icon": "creditCard",
+      "image": "{image}",
+      "section": "Order {number}",
+      "title": "Your order total",
+      "requires": [
+        "number"
+      ],
+      "rows": [
+        [
+          "cart",
+          "Your order",
+          "summary"
+        ],
+        [
+          "list",
+          "Items",
+          "itemText"
+        ],
+        [
           "creditCard",
           "Order total",
           "totalText"
@@ -109,7 +143,7 @@
           "pickup"
         ]
       ],
-      "nudge": "Add a drink or a pastry, or tell Iroh you are all set."
+      "nudge": "Tell Iroh if you would like anything else, or that you are all set."
     },
     "about_shop": {
       "kind": "page",
@@ -712,7 +746,7 @@
 
   // ── 7. Try it without a call: nvDemo.try("<action>") in the console ──────
   // Sample data shaped like the flow's events (from the build spec).
-  const SAMPLES = {"tea_menu": {"title": "Brewed drinks", "note": "Brewed to order. Ready in about ten minutes.", "items": [{"name": "Jasmine Dragon Cup", "category": "brews", "categoryLabel": "Brewed drinks", "price": 4.5, "priceText": "$4.50 small, $5.50 large", "desc": "Our house jasmine green, steeped to order and served in a red clay cup.", "img": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/jasmine-dragon-cup.svg"}, {"name": "White Lotus Cup", "category": "brews", "categoryLabel": "Brewed drinks", "price": 5, "priceText": "$5.00 small, $6.00 large", "desc": "Pale, honeyed white tea with a lotus blossom on the saucer.", "img": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/white-lotus-cup.svg"}, {"name": "Stone Oolong Latte", "category": "brews", "categoryLabel": "Brewed drinks", "price": 5.75, "priceText": "$5.75 small, $6.75 large", "desc": "Ba Sing Se Stone oolong with steamed milk and a touch of brown sugar.", "img": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/stone-oolong-latte.svg"}, {"name": "Fire Ginger Chai", "category": "brews", "categoryLabel": "Brewed drinks", "price": 5.5, "priceText": "$5.50 small, $6.50 large", "desc": "Black tea simmered with fresh ginger, cinnamon and star anise. Warm all the way down.", "img": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/fire-ginger-chai.svg"}, {"name": "Iced Jasmine Cooler", "category": "brews", "categoryLabel": "Brewed drinks", "price": 5.25, "priceText": "$5.25 small, $6.25 large", "desc": "Cold-brewed jasmine over ice with a slice of lemon. Bright and refreshing.", "img": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/iced-jasmine-cooler.svg"}, {"name": "Chrysanthemum Honey Tea", "category": "brews", "categoryLabel": "Brewed drinks", "price": 4.75, "priceText": "$4.75 small, $5.75 large", "desc": "Whole chrysanthemum flowers and wildflower honey. Caffeine free.", "img": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/chrysanthemum-honey-tea.svg"}]}, "order_placed": {"complete": true, "number": "IROH-1042", "item": "Fire Ginger Chai", "image": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/fire-ginger-chai.svg", "size": "large", "quantity": 1, "lineText": "$6.50", "summary": "1 large Fire Ginger Chai, 2 Egg Custard Tart", "totalText": "$13.50", "lines": 2, "name": "Jordan Lee", "pickup": "At the counter in about ten minutes"}, "about_shop": {"headline": "About the shop", "story": "Uncle Iroh opened the shop to share the teas he loves with his neighbors.", "menu": "Tea by the tin, drinks brewed to order, and pastries from the morning bake.", "batches": "Every tin is blended in small batches and sealed by hand.", "ordering": "Orders can be placed by phone or chat and picked up at the counter."}, "visit_info": {"address": "212 Lotus Lane, in the Lower Ring market", "hours": "Tuesday to Sunday, 9 a.m. to 7 p.m.", "seating": "Twelve seats inside, a window bench, and a garden table out back.", "pickup": "Drinks and pastries are ready in about ten minutes. Tins are ready the same day.", "questions": "Chat with Uncle Iroh, or call the shop."}, "live_agent": {}, "call_ended": {"message": "It has been a pleasure. May your cup always be warm. Goodbye."}, "rate_experience": {"xAppUrl": "https://example.com/"}, "rating_received": {"rating": 4}, "home": {}};
+  const SAMPLES = {"tea_menu": {"title": "Brewed drinks", "note": "Brewed to order. Ready in about ten minutes.", "items": [{"name": "Jasmine Dragon Cup", "category": "brews", "categoryLabel": "Brewed drinks", "price": 4.5, "priceText": "$4.50 small, $5.50 large", "desc": "Our house jasmine green, steeped to order and served in a red clay cup.", "img": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/jasmine-dragon-cup.svg"}, {"name": "White Lotus Cup", "category": "brews", "categoryLabel": "Brewed drinks", "price": 5, "priceText": "$5.00 small, $6.00 large", "desc": "Pale, honeyed white tea with a lotus blossom on the saucer.", "img": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/white-lotus-cup.svg"}, {"name": "Stone Oolong Latte", "category": "brews", "categoryLabel": "Brewed drinks", "price": 5.75, "priceText": "$5.75 small, $6.75 large", "desc": "Ba Sing Se Stone oolong with steamed milk and a touch of brown sugar.", "img": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/stone-oolong-latte.svg"}, {"name": "Fire Ginger Chai", "category": "brews", "categoryLabel": "Brewed drinks", "price": 5.5, "priceText": "$5.50 small, $6.50 large", "desc": "Black tea simmered with fresh ginger, cinnamon and star anise. Warm all the way down.", "img": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/fire-ginger-chai.svg"}, {"name": "Iced Jasmine Cooler", "category": "brews", "categoryLabel": "Brewed drinks", "price": 5.25, "priceText": "$5.25 small, $6.25 large", "desc": "Cold-brewed jasmine over ice with a slice of lemon. Bright and refreshing.", "img": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/iced-jasmine-cooler.svg"}, {"name": "Chrysanthemum Honey Tea", "category": "brews", "categoryLabel": "Brewed drinks", "price": 4.75, "priceText": "$4.75 small, $5.75 large", "desc": "Whole chrysanthemum flowers and wildflower honey. Caffeine free.", "img": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/chrysanthemum-honey-tea.svg"}]}, "order_placed": {"complete": true, "number": "IROH-1042", "item": "Fire Ginger Chai", "image": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/fire-ginger-chai.svg", "size": "large", "quantity": 1, "lineText": "$6.50", "summary": "1 large Fire Ginger Chai, 2 Egg Custard Tart", "lines": 2, "name": "Jordan Lee", "pickup": "At the counter in about ten minutes"}, "order_total": {"empty": false, "number": "IROH-1042", "summary": "1 large Fire Ginger Chai, 2 Egg Custard Tart", "itemText": "3 items", "totalText": "$13.50", "lines": 2, "name": "Jordan Lee", "image": "https://jonmccain-nice.github.io/demo-assets/customers/uncleIrohsTeaShop/art/fire-ginger-chai.svg", "pickup": "At the counter in about ten minutes"}, "about_shop": {"headline": "About the shop", "story": "Uncle Iroh opened the shop to share the teas he loves with his neighbors.", "menu": "Tea by the tin, drinks brewed to order, and pastries from the morning bake.", "batches": "Every tin is blended in small batches and sealed by hand.", "ordering": "Orders can be placed by phone or chat and picked up at the counter."}, "visit_info": {"address": "212 Lotus Lane, in the Lower Ring market", "hours": "Tuesday to Sunday, 9 a.m. to 7 p.m.", "seating": "Twelve seats inside, a window bench, and a garden table out back.", "pickup": "Drinks and pastries are ready in about ten minutes. Tins are ready the same day.", "questions": "Chat with Uncle Iroh, or call the shop."}, "live_agent": {}, "call_ended": {"message": "It has been a pleasure. May your cup always be warm. Goodbye."}, "rate_experience": {"xAppUrl": "https://example.com/"}, "rating_received": {"rating": 4}, "home": {}};
   window.nvDemo = {
     try(action, customerName) {
       const metadata = { action, metaJson: JSON.stringify(SAMPLES[action] || {}), customerName };
