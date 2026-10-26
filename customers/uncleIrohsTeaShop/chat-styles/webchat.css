@@ -101,10 +101,39 @@ div[data-cognigy-webchat-root="true"], div[data-cognigy-webchat-root="true"] * {
   fill: #1F4A2B !important;
 }
 
-/* Widget panel size — change these to make the webchat wider/taller. */
-[data-cognigy-webchat-root] [data-cognigy-webchat] {
-  width: 460px !important;
-  height: 780px !important;
+/* Widget panel size. Two branches, because a single fixed size overflowed a phone screen:
+   on a Galaxy Z Fold4 folded (344px wide) the old 460x780 panel ran 116px off the side, and
+   780px was taller than the unfolded portrait viewport too.
+
+   Phones (< 768px): fill the screen. Webchat v3 has no intrinsic size of its own — setting
+   width:auto collapses the panel to 2x2 — so the sizes have to be explicit. inset:0 is
+   required: without it the panel keeps Cognigy's own bottom/right offsets and lands partly
+   off-screen (measured at -19,-88 on a 674px-wide viewport).
+
+   Larger screens: keep the floating 460x780 panel, but clamp it to the viewport. top:auto
+   with bottom:16px is required — clamping the height alone pushes the panel's top off the
+   screen (measured at y:-73 in a 700px-tall window).
+
+   Change the 460px / 780px below to make the desktop webchat wider/taller. */
+@media (max-width: 767px) {
+  [data-cognigy-webchat-root] [data-cognigy-webchat] {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-width: 100vw !important;
+    max-height: 100dvh !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+}
+@media (min-width: 768px) {
+  [data-cognigy-webchat-root] [data-cognigy-webchat] {
+    width: min(460px, calc(100vw - 32px)) !important;
+    height: min(780px, calc(100dvh - 32px)) !important;
+    top: auto !important;
+    bottom: 16px !important;
+  }
 }
 
 /* Send-message button icon. */
